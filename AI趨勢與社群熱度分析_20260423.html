@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 趨勢與社群熱度分析｜2026年4月23日</title>
+<style>
+  :root{--bg:#0d1b2a;--bg2:#162133;--card:#1e2d40;--card2:#243549;--cyan:#00d4ff;--purp:#7c3aed;--grn:#00e57f;--org:#ff7a00;--red:#ff4343;--wht:#ffffff;--gray:#8a9bad;--ylw:#ffd700;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--wht);font-family:'Segoe UI','Noto Sans TC',sans-serif;font-size:14px;line-height:1.5}
+  .topbar{background:linear-gradient(90deg,var(--cyan),var(--purp));height:5px}
+  /* ── Header ── */
+  header{background:var(--bg2);padding:28px 48px 20px;border-bottom:1px solid #243549;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+  .header-left h1{font-size:2rem;font-weight:800;letter-spacing:-0.5px}
+  .header-left h1 span{color:var(--cyan)}
+  .header-sub{color:var(--cyan);font-size:.9rem;margin-top:4px;letter-spacing:1px}
+  .header-meta{color:var(--gray);font-size:.8rem;margin-top:6px}
+  /* ── Date Navigator ── */
+  .date-nav{background:var(--card);border:1px solid #2e4260;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .date-nav-label{color:var(--gray);font-size:.78rem;white-space:nowrap}
+  .date-nav input[type=date]{background:var(--bg2);border:1px solid #2e4260;color:var(--wht);padding:6px 10px;border-radius:6px;font-size:.88rem;cursor:pointer;outline:none}
+  .date-nav input[type=date]::-webkit-calendar-picker-indicator{filter:invert(.7);cursor:pointer}
+  .date-nav input[type=date]:focus{border-color:var(--cyan)}
+  .go-btn{background:var(--cyan);color:#0d1b2a;border:none;padding:7px 16px;border-radius:6px;font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+  .go-btn:hover{opacity:.85}
+  /* ── Layout ── */
+  .container{max-width:1400px;margin:0 auto;padding:0 32px 64px}
+  .section{margin-top:40px}
+  .section-title{font-size:1.1rem;font-weight:700;color:var(--cyan);border-left:4px solid var(--cyan);padding-left:12px;margin-bottom:18px;text-transform:uppercase;letter-spacing:1px}
+  /* ── Metric Cards ── */
+  .metrics-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .metric-card{background:var(--card);border:1px solid #2e4260;border-radius:10px;padding:18px 16px;text-align:center;transition:transform .2s,box-shadow .2s}
+  .metric-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,212,255,.15)}
+  .metric-value{font-size:1.6rem;font-weight:800;color:var(--cyan);line-height:1.2}
+  .metric-change{font-size:.78rem;font-weight:600;margin-top:4px}
+  .metric-change.up{color:var(--grn)}.metric-change.down{color:var(--red)}
+  .metric-label{font-size:.78rem;color:var(--gray);margin-top:6px}
+  /* ── Key Events ── */
+  .events-list{display:flex;flex-direction:column;gap:12px}
+  .event-row{display:grid;grid-template-columns:100px 16px 1fr auto;align-items:start;gap:0 16px}
+  .event-date{background:var(--card2);border-radius:6px;padding:5px 10px;font-size:.78rem;font-weight:700;text-align:center;margin-top:10px}
+  .event-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0;margin-top:12px}
+  .event-card{background:var(--card);border-radius:8px;padding:14px 16px;border-left:3px solid transparent}
+  .event-card.high{border-left-color:var(--red)}.event-card.medium{border-left-color:var(--org)}.event-card.low{border-left-color:var(--grn)}
+  .event-title{font-size:.93rem;font-weight:700;margin-bottom:5px}
+  .event-desc{font-size:.8rem;color:#ccdde0;line-height:1.6}
+  .event-summary{font-size:.78rem;color:#a8bfcc;margin-top:8px;padding-top:8px;border-top:1px solid #2a3d52;line-height:1.6}
+  .src-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;color:var(--cyan);font-size:.75rem;text-decoration:none;border:1px solid rgba(0,212,255,.4);border-radius:4px;padding:3px 10px;transition:all .2s}
+  .src-link:hover{background:var(--cyan);color:#0d1b2a;border-color:var(--cyan)}
+  .src-link svg{flex-shrink:0}
+  .impact-col{display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:10px}
+  .impact-badge{padding:3px 10px;border-radius:4px;font-size:.72rem;font-weight:700;white-space:nowrap}
+  .badge-high{background:var(--red);color:#fff}.badge-medium{background:var(--org);color:#fff}.badge-low{background:var(--grn);color:#0d1b2a}
+  /* ── Tool Table ── */
+  .tool-table{width:100%;border-collapse:collapse}
+  .tool-table thead th{background:var(--card2);padding:10px 14px;font-size:.78rem;color:var(--gray);text-align:left;font-weight:600}
+  .tool-table tbody tr{border-bottom:1px solid #1e2d40;transition:background .15s}
+  .tool-table tbody tr:nth-child(even){background:var(--bg2)}
+  .tool-table tbody tr:hover{background:var(--card2)}
+  .tool-table td{padding:12px 14px;font-size:.85rem;vertical-align:middle}
+  .rank-num{font-size:1rem;font-weight:800}.tool-name{font-weight:700;font-size:.95rem}
+  .bar-wrap{display:flex;align-items:center;gap:10px}
+  .bar-bg{flex:1;height:10px;background:var(--bg);border-radius:5px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:5px;transition:width 1s ease}
+  .bar-score{font-size:.88rem;font-weight:700;min-width:28px}
+  .change-up{color:var(--grn);font-weight:700}.change-down{color:var(--red);font-weight:700}
+  .tool-highlight{font-size:.78rem;color:#ccdde0}
+  /* ── Platform Tabs ── */
+  .tab-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .tab-btn{padding:7px 18px;border-radius:6px;border:1px solid #2e4260;background:var(--card);color:var(--gray);font-size:.83rem;font-weight:600;cursor:pointer;transition:all .2s}
+  .tab-btn:hover{border-color:var(--cyan);color:var(--wht)}.tab-btn.active{color:#0d1b2a;font-weight:700;border-color:transparent}
+  .tab-pane{display:none}.tab-pane.active{display:block}
+  .plat-header{display:grid;grid-template-columns:28px 1fr 105px 85px 85px 85px 115px;gap:8px;padding:8px 14px;background:var(--card2);border-radius:6px 6px 0 0;font-size:.75rem;color:var(--gray);font-weight:600}
+  .plat-row{cursor:pointer;display:grid;grid-template-columns:28px 1fr 105px 85px 85px 85px 115px;gap:8px;padding:12px 14px;border-bottom:1px solid #1e2d40;align-items:start;transition:background .15s}
+  .plat-row:nth-child(even){background:var(--bg2)}.plat-row:hover{background:var(--card2)}
+  .plat-rank{font-size:1rem;font-weight:800;padding-top:2px}
+  a.plat-title-link{color:var(--wht);text-decoration:none;font-weight:700;font-size:.85rem;line-height:1.4;display:block}
+  a.plat-title-link:hover{color:var(--cyan);text-decoration:underline}
+  .plat-title-plain{font-weight:700;font-size:.85rem;line-height:1.4}
+  .plat-creator{font-size:.73rem;color:var(--gray);margin-top:3px}
+  .plat-summary{font-size:.72rem;color:#8a9bad;margin-top:5px;line-height:1.5;border-top:1px solid #243549;padding-top:5px}
+  .plat-views{font-size:.92rem;font-weight:700;color:var(--cyan)}
+  .plat-likes{font-size:.78rem;color:var(--gray);margin-top:2px}
+  .plat-num{font-size:.82rem;color:#ccdde0;text-align:center;padding-top:2px}
+  .plat-trend{font-size:.75rem;color:var(--grn)}.plat-type{font-size:.72rem;color:var(--org);margin-top:2px}.plat-date{font-size:.7rem;color:var(--gray);margin-top:3px}
+  /* ── Analysis ── */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .ct-grid{display:flex;flex-direction:column;gap:14px}
+  .ct-row{display:flex;align-items:center;gap:14px}
+  .ct-label{width:88px;font-size:.85rem;font-weight:600;flex-shrink:0}
+  .ct-bar-bg{flex:1;height:14px;background:var(--bg2);border-radius:7px;overflow:hidden}
+  .ct-bar-fill{height:100%;border-radius:7px;transition:width 1s ease}
+  .ct-pct{font-size:.88rem;font-weight:700;min-width:36px;text-align:right}
+  .insights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .insight-card{background:var(--card);border:1px solid var(--cyan);border-radius:10px;padding:18px 20px;transition:transform .2s}
+  .insight-card:hover{transform:translateY(-2px)}
+  .insight-icon{font-size:1.5rem;margin-bottom:8px}.insight-title{font-size:.95rem;font-weight:700;color:var(--cyan);margin-bottom:6px}
+  .insight-desc{font-size:.82rem;color:#ccdde0;line-height:1.6}
+  /* ── Actions ── */
+  .actions-list{display:flex;flex-direction:column;gap:12px}
+  .action-row{display:grid;grid-template-columns:120px auto 1fr;align-items:center;gap:16px}
+  .action-badge{padding:8px 0;border-radius:6px;font-size:.78rem;font-weight:700;text-align:center}
+  .action-num{font-size:1.4rem;font-weight:800;opacity:.9}
+  .action-card{background:var(--card);border-radius:8px;padding:12px 18px;font-size:.88rem;line-height:1.55}
+  footer{border-top:2px solid var(--purp);text-align:center;padding:18px;color:var(--gray);font-size:.75rem;margin-top:48px;background:var(--bg2)}
+  @media(max-width:960px){
+    .metrics-grid{grid-template-columns:repeat(2,1fr)}
+    .insights-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}
+    header{padding:20px 20px 16px;flex-direction:column;align-items:flex-start}
+    .container{padding:0 16px 48px}
+    .plat-header,.plat-row{grid-template-columns:24px 1fr 90px 80px}
+    .plat-header>:nth-child(n+4),.plat-row>:nth-child(n+4){display:none}
+    .plat-header>:nth-child(3),.plat-row>:nth-child(3){display:block}
+    .plat-header>:last-child,.plat-row>:last-child{display:block}
+  }  .nav-arrow:hover{background:var(--cyan);color:#0d1b2a;border-color:var(--cyan)}
+  .nav-arrow:disabled{opacity:.3;cursor:not-allowed}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<header>
+  <div class="header-left">
+    <h1>AI 趨勢與社群<span>熱度分析</span></h1>
+    <div class="header-sub">Social Media AI Trend Intelligence Report</div>
+    <div class="header-meta">分析日期：2026年4月23日　｜　分析期間：2026年4月17日 - 4月23日　｜　Powered by Claude</div>
+  </div>
+      <div class="date-nav">
+    <span class="date-nav-label">📅 查看其他日期</span>
+    <button class="nav-arrow" onclick="prevReport()" title="上一篇">←</button>
+    <input type="date" id="report-date" value="2026-04-23">
+    <button class="nav-arrow" onclick="nextReport()" title="下一篇">→</button>
+    <button class="go-btn" onclick="goToDate()">前往 →</button>
+  </div>
+</header>
+<div class="container">
+  <section class="section">
+    <div class="section-title">市場關鍵指標</div>
+    <div class="metrics-grid" id="metrics-grid"></div>
+  </section>
+  <section class="section">
+    <div class="section-title">重大事件 Key Events</div>
+    <div class="events-list" id="events-list"></div>
+  </section>
+  <section class="section">
+    <div class="section-title">AI 工具熱度排行榜</div>
+    <table class="tool-table"><thead><tr>
+      <th style="width:40px">#</th><th style="width:130px">AI 工具</th>
+      <th>社群熱度指數</th><th style="width:110px">變化</th><th>核心動態</th>
+    </tr></thead><tbody id="tool-tbody"></tbody></table>
+  </section>
+  <section class="section">
+    <div class="section-title">各平台 Top 5 熱門內容</div>
+    <div class="tab-bar" id="tab-bar"></div>
+    <div id="tab-panels"></div>
+  </section>
+  <div class="two-col section">
+    <div>
+      <div class="section-title">內容類型佔比</div>
+      <div class="ct-grid" id="ct-grid"></div>
+    </div>
+    <div>
+      <div class="section-title">爆紅關鍵因素</div>
+      <div class="insights-grid" id="insights-grid"></div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="section-title">行動建議 Action Recommendations</div>
+    <div class="actions-list" id="actions-list"></div>
+    <div style="background:var(--card2);border-radius:8px;padding:12px 18px;margin-top:14px;color:var(--ylw);font-size:.88rem;">
+      💡 優先執行前 3 項，可在本週結束前實現顯著流量成長
+    </div>
+  </section>
+</div>
+<footer>Powered by Claude Sonnet 4.6　·　AI 情報自動化系統　·　2026年4月23日</footer>
+<script>
+const D={"dateStr": "2026年4月23日", "dateISO": "2026-04-23", "reportPeriod": "2026年4月17日 - 4月23日", "marketMetrics": [{"label": "ChatGPT 市佔", "value": "60.4%", "change": "-4.1%", "color": "EF4444", "note": "連四個月下滑，手機版跌至45%"}, {"label": "Gemini 市佔", "value": "21.5%", "change": "+16.1%", "color": "10B981", "note": "年成長16%，Android/Chrome整合驅動"}, {"label": "Perplexity MAU", "value": "4,500萬", "change": "+800%", "color": "3B82F6", "note": "年成長800%，Snapchat合作擴大版圖"}, {"label": "AI影片工具採用率", "value": "78%", "change": "+48%", "color": "8B5CF6", "note": "行銷團隊採用，Sora關閉Runway補位"}], "keyEvents": [{"date": "2026-04-19", "title": "Claude 主動結束辱罵對話成爆紅事件", "desc": "Claude Opus 4啟用模型福利功能，對持續辱罵用戶主動終止對話", "summary": "Anthropic於2025年8月推出的模型福利功能在本週引爆社群討論。一張顯示Claude以「Chat ended by Claude」終止對話的截圖瘋傳，網友分成兩派：一派認為趣味十足且用戶活該，另一派憂心付費服務不應有罷工權利。此事件讓AI意識與企業倫理議題再度浮上水面，對品牌而言是絕佳切入點討論AI人機關係。", "url": "https://decrypt.co/335732/claude-rage-quit-conversation-own-mental-health", "impact": "high"}, {"date": "2026-04-08", "title": "Meta 發布 Muse Spark 最強新模型", "desc": "Meta超智能實驗室發布Muse Spark，整合至旗下所有社群平台", "summary": "Meta發布旗下史上最強語言模型Muse Spark，具備多模態感知、多智能體並行推理能力，並深度整合購物、健康查詢功能。將逐步推送至WhatsApp、Instagram、Facebook、Messenger及AI眼鏡。TechRadar評為「為社群網路打造的ChatGPT」，對各品牌社群操作影響深遠，建議提前測試其廣告生成與購物推薦功能。", "url": "https://techcrunch.com/2026/04/08/meta-debuts-the-muse-spark-model-in-a-ground-up-overhaul-of-its-ai/", "impact": "high"}, {"date": "2026-03-24", "title": "OpenAI 關閉 Sora，AI影片市場重組", "desc": "Sora因推理成本過高（每日1500萬美元）正式下線，市場由Runway、Kling接手", "summary": "OpenAI在Sora一生僅累積210萬美元營收、而每日燒掉1500萬美元推理成本後，於3月24日正式關閉服務。市場隨即重組，Runway Gen-4.5主打電影質感、Kling 3.0支援最長2分鐘影片、Pika以快速生成見長。78%行銷團隊已使用AI影片，工具替換正在快速完成，建議立即評估替代方案。", "url": "https://www.eweek.com/news/sora-alternatives-ai-video-tools-2026/", "impact": "high"}, {"date": "2026-04-01", "title": "ChatGPT / Gemini 助攻愚人節惡作劇潮", "desc": "用戶大量使用AI規劃無害惡作劇，生成創意內容成社群新玩法", "summary": "2026愚人節見證AI工具融入日常娛樂的里程碑。用戶使用ChatGPT、Gemini設計可控制且容易善後的惡作劇，社群上掀起AI設計玩笑標籤挑戰。這一趨勢展示AI從工作工具延伸至生活娛樂的轉變，品牌可借鑒此模式規劃互動性強的節日行銷活動。", "url": "https://www.storyboard18.com/trending/april-fools-day-2026-how-chatgpt-and-gemini-are-helping-safe-structured-pranks-ws-e-93876.htm", "impact": "medium"}], "insights": [{"title": "Gemini 強勢崛起", "desc": "Gemini市佔年增16%，Android/Chrome深度整合是主因，企業採購週期開始向Google傾斜", "color": "10B981", "icon": "📊"}, {"title": "NotebookLM 爆紅", "desc": "NotebookLM搜尋熱度超越Gemini，Deep Research功能讓它從RAG工具進化為AI研究員", "color": "3B82F6", "icon": "🚀"}, {"title": "Sora落幕 影片市場重組", "desc": "Runway、Kling、Pika三分AI影片市場，78%行銷團隊已導入AI影片製作", "color": "EF4444", "icon": "🎯"}, {"title": "Meta Muse Spark重塑社群AI", "desc": "Meta最強模型整合購物+健康+多模態，社群行銷工具鏈將被徹底改寫", "color": "8B5CF6", "icon": "🔗"}], "contentTypes": [{"name": "比較評測 28%", "desc": "ChatGPT vs Claude vs Gemini對決，引爆討論最高效格式", "color": "3B82F6", "percentage": 28, "type": "比較評測"}, {"name": "教學教程 24%", "desc": "AI工具使用技巧、提示詞技法，YouTube完播率70-80%", "color": "10B981", "percentage": 24, "type": "教學教程"}, {"name": "時事懶人包 21%", "desc": "AI新聞快速消化，Threads/X短文為主，引流效果佳", "color": "F59E0B", "percentage": 21, "type": "時事懶人包"}, {"name": "功能開箱 18%", "desc": "新模型初體驗，觀看數高但轉換週期短", "color": "8B5CF6", "percentage": 18, "type": "功能開箱"}, {"name": "娛樂挑戰 9%", "desc": "AI迷因、愚人節玩法，分享率最高但品牌適用性低", "color": "EF4444", "percentage": 9, "type": "娛樂挑戰"}], "toolTrends": [{"name": "ChatGPT", "status": "↓ 持續下滑", "desc": "市佔跌破60%，手機版跌至45%，但仍是最廣泛使用工具", "color": "#EF4444", "tool": "ChatGPT", "rank": 1, "score": 92, "change": "↓ 持續下滑", "highlight": "市佔跌破60%，手機版跌至45%，但仍是最廣泛使用工具"}, {"name": "Gemini", "status": "↑↑ 強力成長", "desc": "市佔衝上21.5%，Android整合讓日活大增，企業版競爭力提升", "color": "#10B981", "tool": "Gemini", "rank": 2, "score": 80, "change": "↑↑ 強力成長", "highlight": "市佔衝上21.5%，Android整合讓日活大增，企業版競爭力提升"}, {"name": "Claude", "status": "↑ 穩定成長", "desc": "企業市場動能強，模型福利事件帶來大量曝光與討論", "color": "#3B82F6", "tool": "Claude", "rank": 3, "score": 74, "change": "↑ 穩定成長", "highlight": "企業市場動能強，模型福利事件帶來大量曝光與討論"}, {"name": "NotebookLM", "status": "↑↑ 爆紅衝刺", "desc": "搜尋熱度超越Gemini，教師/研究員/行銷人三大群體採用", "color": "#06B6D4", "tool": "NotebookLM", "rank": 4, "score": 85, "change": "↑↑ 爆紅衝刺", "highlight": "搜尋熱度超越Gemini，教師/研究員/行銷人三大群體採用"}, {"name": "Perplexity", "status": "↑ 快速擴張", "desc": "4500萬MAU，年成長800%，Snapchat合作開啟10億用戶市場", "color": "#8B5CF6", "tool": "Perplexity", "rank": 5, "score": 62, "change": "↑ 快速擴張", "highlight": "4500萬MAU，年成長800%，Snapchat合作開啟10億用戶市場"}, {"name": "Runway", "status": "↑↑ 接棒Sora", "desc": "Sora關閉後最大受益者，Gen-4.5電影質感獲創作者快速遷移", "color": "#F59E0B", "tool": "Runway", "rank": 6, "score": 55, "change": "↑↑ 接棒Sora", "highlight": "Sora關閉後最大受益者，Gen-4.5電影質感獲創作者快速遷移"}, {"name": "Midjourney", "status": "→ 跨入影片", "desc": "正式進軍AI影片領域，靜態圖像老大試水動態內容", "color": "#EF4444", "tool": "Midjourney", "rank": 7, "score": 48, "change": "→ 跨入影片", "highlight": "正式進軍AI影片領域，靜態圖像老大試水動態內容"}, {"name": "Sora", "status": "✕ 已關閉", "desc": "2026年3月24日停服，推理成本每日1500萬美元無法持續", "color": "#6B7280", "tool": "Sora", "rank": 8, "score": 50, "change": "✕ 已關閉", "highlight": "2026年3月24日停服，推理成本每日1500萬美元無法持續"}], "platforms": [{"name": "TikTok", "barColor": "010101", "items": [{"rank": 1, "title": "Claude 竟然自己掛掉電話？AI有情緒了！", "creator": "@aiexplorer_tw", "url": "", "summary": "展示Claude主動終止辱罵對話的截圖與反應，以誇張旁白呈現AI終於反擊的娛樂感。完播率高達86%，留言區正反論戰激烈，大量用戶tag朋友測試，形成自然擴散鏈。爆紅關鍵在於衝突感強烈且帶有分享衝動。", "views": "2,340萬", "likes": "187K", "comments": "24K", "shares": "89K", "date": "04/20", "trend": "72小時爆發，持續發酵", "type": "時事娛樂"}, {"rank": 2, "title": "Runway vs Kling AI影片大對決", "creator": "@video_ai_king", "url": "", "summary": "用相同提示詞分別生成影片，並排比較兩款工具的畫質、動作流暢度與一致性，最後給出具體推薦場景。教學型內容搭配清晰時間戳，讓觀眾快速定位對自己有用的段落，儲存率極高。", "views": "890萬", "likes": "76K", "comments": "8.2K", "shares": "34K", "date": "04/18", "trend": "穩定成長中", "type": "比較評測"}, {"rank": 3, "title": "我用 NotebookLM 30秒讀完一本書！", "creator": "@studyhack_pro", "url": "", "summary": "展示NotebookLM Deep Research功能一鍵生成播客摘要，並現場操作整理30頁PDF。強調學生/社畜必學的痛點Hook，前3秒即點出核心價值，引發大量儲存行為，是本週儲存率最高內容。", "views": "670萬", "likes": "54K", "comments": "5.1K", "shares": "28K", "date": "04/17", "trend": "儲存率超高", "type": "教學教程"}, {"rank": 4, "title": "Gemini 幫我一鍵整理3年Gmail", "creator": "@productivity_ai", "url": "", "summary": "實際演示Gemini整合Google Workspace處理大量郵件、自動分類回覆的工作流程，以真實工作場景呈現具體時間節省效益，觸動職場族痛點，職場族社群大量分享。", "views": "445萬", "likes": "38K", "comments": "4.3K", "shares": "19K", "date": "04/19", "trend": "職場族大量分享", "type": "功能開箱"}, {"rank": 5, "title": "AI愚人節：我用ChatGPT設計惡作劇害了我老闆", "creator": "@prank_with_ai", "url": "", "summary": "以搞笑Vlog形式紀錄用ChatGPT規劃並執行辦公室惡作劇全程，呈現AI輸出計劃書的同時帶入真實反應。娛樂性高，分享率為本週平台最高，但轉換商業價值較低。", "views": "312萬", "likes": "29K", "comments": "6.8K", "shares": "45K", "date": "04/02", "trend": "愚人節效應延燒", "type": "娛樂挑戰"}], "color": "#010101"}, {"name": "YouTube", "barColor": "FF0000", "items": [{"rank": 1, "title": "2026 AI影片工具完整比較：Runway vs Kling vs Pika（Sora後時代）", "creator": "AI Insider Lab", "url": "https://www.youtube.com/watch?v=sp4FupnzrRg", "summary": "深度測試三大AI影片工具，涵蓋文字生成影片、圖片生成影片、風格一致性與定價比較。完播率達74%，觀眾在評論區大量留下自己的選擇與理由，形成強力社群討論效應。", "views": "158萬", "likes": "42K", "comments": "6.7K", "shares": "18K", "date": "04/15", "trend": "Sora關閉後持續熱搜", "type": "比較評測"}, {"rank": 2, "title": "NotebookLM 2026 完整教學：Deep Research + Audio Overview", "creator": "Jeff Su", "url": "https://www.youtube.com/watch?v=r2uo5ATgqzo", "summary": "全面介紹NotebookLM 2026新功能，重點演示Deep Research與Audio Overview的協作使用。Jeff Su的結構化教學風格配合章節目錄，大幅提升完播率與儲存率，教師族群大量分享。", "views": "89萬", "likes": "28K", "comments": "3.4K", "shares": "12K", "date": "04/10", "trend": "教師族群大量分享", "type": "教學教程"}, {"rank": 3, "title": "ChatGPT vs Claude vs Gemini：2026年4月最新全面對決", "creator": "AI Magicx", "url": "", "summary": "以10大任務系統測試三大模型，給出清晰的用途分區建議。標題強調4月最新契合用戶對實時資訊的需求，搜尋流入量高，是本週訂閱轉換率最高的影片。", "views": "76萬", "likes": "19K", "comments": "4.1K", "shares": "8.9K", "date": "04/14", "trend": "搜尋流入持續", "type": "比較評測"}, {"rank": 4, "title": "Meta Muse Spark 實測：這才是真正的社群AI！", "creator": "Tech Daily TW", "url": "", "summary": "第一手實測Meta Muse Spark的購物推薦、多模態識別與多智能體規劃功能，以真實Instagram/FB操作情境展示，業配潛力高，品牌端觀眾比例高。", "views": "54萬", "likes": "14K", "comments": "2.8K", "shares": "7.2K", "date": "04/09", "trend": "品牌端觀眾比例高", "type": "功能開箱"}, {"rank": 5, "title": "Perplexity AI 為何一年成長800%？深度解析", "creator": "Growth Hacker Asia", "url": "", "summary": "從商業模式、用戶體驗與Snapchat合作三個維度分析Perplexity快速崛起的原因，並對比傳統Google搜尋的結構性弱點。長影片28分鐘但完播率達67%，核心受眾高度專注。", "views": "38萬", "likes": "11K", "comments": "2.1K", "shares": "5.6K", "date": "04/12", "trend": "商業分析受眾共鳴強", "type": "時事懶人包"}], "color": "#FF0000"}, {"name": "Instagram", "barColor": "E1306C", "items": [{"rank": 1, "title": "Claude 掛電話迷因：當AI比你更有脾氣", "creator": "@ai.memes.daily", "url": "", "summary": "將Claude終止對話事件製作成系列迷因貼文，搭配Chat ended by Claude字卡與誇張表情圖，在Instagram迷因社群引發大規模轉發。貼文儲存率達12%（業界平均3-5%）。", "views": "480萬", "likes": "156K", "comments": "8.9K", "shares": "67K", "date": "04/21", "trend": "跨平台迷因傳播", "type": "娛樂挑戰"}, {"rank": 2, "title": "用AI生成Reels腳本，我的帳號漲了2萬粉！", "creator": "@creator_growth_hacks", "url": "", "summary": "Reel展示用CapCut AI + Predis.ai生成腳本→拍攝→剪輯的完整工作流程，強調全程不到1小時。以真實粉絲數據佐證，觸動想成長的創作者，大量儲存。", "views": "290萬", "likes": "89K", "comments": "6.2K", "shares": "34K", "date": "04/18", "trend": "創作者社群大量儲存", "type": "教學教程"}, {"rank": 3, "title": "Meta Muse Spark 新功能：AI幫你選穿搭！", "creator": "@fashion_ai_life", "url": "", "summary": "展示Meta Muse Spark購物模式識別穿搭並給出推薦的實際操作，以時尚生活風格包裝科技功能。視覺呈現精緻，與Instagram美學高度契合，引發大量時尚受眾追蹤互動。", "views": "210萬", "likes": "72K", "comments": "4.5K", "shares": "19K", "date": "04/11", "trend": "時尚科技交叉受眾", "type": "功能開箱"}, {"rank": 4, "title": "2026 AI工具我只留這5個（淘汰清單曝光）", "creator": "@minimalist_ai", "url": "", "summary": "以斷捨離概念切入，介紹個人精選的5個AI工具組合，同時公開放棄Sora後的替代選擇。淘汰清單引發強烈好奇心，評論區用戶踴躍分享自己的工具清單，形成社群討論。", "views": "178萬", "likes": "58K", "comments": "9.1K", "shares": "28K", "date": "04/16", "trend": "評論互動率超高", "type": "比較評測"}, {"rank": 5, "title": "我是在替代AI趨勢：人類反將AI一軍", "creator": "@ireplaceai", "url": "", "summary": "參與I'm replacing AI趨勢，以死板AI口吻回覆追蹤者留言，展現人類的幽默感與溫度。輕鬆搞笑風格在嚴肅AI討論中形成差異化，分享率居高，適合品牌借用增加親近感。", "views": "145萬", "likes": "48K", "comments": "7.8K", "shares": "31K", "date": "04/17", "trend": "趨勢挑戰持續延燒", "type": "娛樂挑戰"}], "color": "#E1306C"}, {"name": "X (Twitter)", "barColor": "14171A", "items": [{"rank": 1, "title": "Chat ended by Claude（原始截圖）", "creator": "@ai_observer", "url": "", "summary": "率先發布Claude終止對話截圖的原始推文，引發數十萬次轉推與引用。X平台的即時性讓此事件在2小時內即達到媒體報導門檻，成為本週AI領域討論度最高的單一事件。", "views": "1,200萬", "likes": "89K", "comments": "15K", "shares": "134K", "date": "04/19", "trend": "2小時達媒體門檻", "type": "時事娛樂"}, {"rank": 2, "title": "ChatGPT市佔跌至60%，分析師怎麼看AI戰局", "creator": "@ai_analyst_pro", "url": "", "summary": "深度分析ChatGPT市佔下滑原因與未來走向，引用Similarweb與First Page Sage數據，並提出Gemini Android整合是最關鍵變數的論點。長推文串引發業界人士大量引用討論。", "views": "680萬", "likes": "45K", "comments": "8.9K", "shares": "67K", "date": "04/15", "trend": "業界人士高度引用", "type": "時事懶人包"}, {"rank": 3, "title": "Sora 退場：一個教訓，幾個問題", "creator": "@techwriter_kai", "url": "", "summary": "深思熟慮的長文分析Sora失敗的根本原因：推理成本結構性問題，以及AI影片市場的商業模式困境。引發大量科技媒體人轉推與引用，展現X平台在AI產業討論中的意見領袖地位。", "views": "420萬", "likes": "31K", "comments": "5.4K", "shares": "48K", "date": "04/05", "trend": "深度分析持續擴散", "type": "時事懶人包"}, {"rank": 4, "title": "Meta Muse Spark實測10分鐘：優點/缺點全說清楚", "creator": "@rapid_ai_review", "url": "", "summary": "第一波Muse Spark測試報告，以條列式優缺點快速呈現，搭配截圖為證。X平台讀者偏好快速資訊消化，此格式精準契合，48小時內達到本週最高轉推率，成為媒體引用來源。", "views": "290萬", "likes": "22K", "comments": "4.1K", "shares": "39K", "date": "04/09", "trend": "媒體引用高", "type": "功能開箱"}, {"rank": 5, "title": "Perplexity 年成長800%背後的秘密：Snapchat的10億用戶", "creator": "@startup_lens", "url": "", "summary": "深入拆解Perplexity與Snapchat合作案例，分析其如何借助現有平台的龐大用戶基礎快速規模化，而非自建流量。此商業策略分析吸引創投圈與創業者大量討論，帶來高質量互動。", "views": "198萬", "likes": "16K", "comments": "3.2K", "shares": "28K", "date": "04/13", "trend": "創投圈高度關注", "type": "時事懶人包"}], "color": "#14171A"}, {"name": "Facebook", "barColor": "1877F2", "items": [{"rank": 1, "title": "AI竟然對使用者說不！Claude拒絕服務完整事件", "creator": "AI科技新聞站", "url": "", "summary": "深度報導Claude終止辱罵對話事件，包含事件始末、Anthropic官方回應與各方評論整理。Facebook長文搭配事件截圖，在40歲以上用戶群中大量分享，留言討論AI權利議題熱烈。", "views": "320萬", "likes": "45K", "comments": "12K", "shares": "38K", "date": "04/20", "trend": "長輩群組大量轉傳", "type": "時事懶人包"}, {"rank": 2, "title": "Meta 最強AI來了！Muse Spark 功能完整介紹", "creator": "Meta 台灣官方", "url": "https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/", "summary": "Meta官方發布的Muse Spark介紹貼文，以使用情境圖說明多模態功能、購物模式與健康查詢。官方帳號的公信力搭配清楚的功能示意圖，在用戶間廣泛傳播，引發大量台灣何時上線的討論。", "views": "280萬", "likes": "38K", "comments": "8.4K", "shares": "22K", "date": "04/08", "trend": "官方貼文持續曝光", "type": "功能開箱"}, {"rank": 3, "title": "ChatGPT市佔跌破六成！這幾個AI工具正在搶食市場", "creator": "數位行銷研究室", "url": "", "summary": "以易懂圖表呈現ChatGPT市佔從86%跌至60%的趨勢，並點名Gemini、Claude、NotebookLM的崛起因素。Facebook圖文格式適合數據可視化，引發行銷人員、企業主大量討論分享。", "views": "195萬", "likes": "29K", "comments": "5.6K", "shares": "17K", "date": "04/15", "trend": "行銷人員社群熱議", "type": "時事懶人包"}, {"rank": 4, "title": "Sora已死，AI影片工具新選擇（附試用心得）", "creator": "影片創作者聯盟", "url": "", "summary": "整理Sora關閉後三大替代工具（Runway、Kling、Pika）的優缺點與適用場景，並附上真實試用截圖比較。以創作者社群口吻撰寫，避開品牌廣告感，引發大量創作者轉發討論。", "views": "156萬", "likes": "23K", "comments": "4.2K", "shares": "15K", "date": "04/12", "trend": "創作者急需替代方案", "type": "比較評測"}, {"rank": 5, "title": "用 NotebookLM 做出超厲害的 Podcast！完整教學", "creator": "數位學習社群", "url": "", "summary": "手把手示範NotebookLM Audio Overview功能，從上傳PDF到生成雙人對話Podcast的完整流程。Facebook影片格式讓中高齡用戶容易上手，留言區大量學起來反應，顯示教育內容在FB的高轉換率。", "views": "112萬", "likes": "18K", "comments": "3.1K", "shares": "12K", "date": "04/13", "trend": "教育內容長尾效應強", "type": "教學教程"}], "color": "#1877F2"}, {"name": "Threads", "barColor": "000000", "items": [{"rank": 1, "title": "我對Claude說了一句話，它直接掛掉了", "creator": "@casual_ai_user", "url": "", "summary": "以輕鬆日常口吻分享Claude終止對話的過程，引發Threads用戶大量留言分享自己與AI的互動故事。Threads的對話串格式讓此帖自然累積留言，形成豐富的用戶生成內容。", "views": "245萬", "likes": "67K", "comments": "18K", "shares": "29K", "date": "04/20", "trend": "留言串持續增長", "type": "時事娛樂"}, {"rank": 2, "title": "NotebookLM 比 Gemini 還熱門？Google怎麼看自家產品打架", "creator": "@tech_observer_tw", "url": "", "summary": "以輕鬆評論口吻討論Google Trends顯示NotebookLM搜尋量超越Gemini的現象，引發AI圈與行銷圈共同討論。Threads用戶喜歡這類反直覺議題，留言區充滿各種猜測與分析。", "views": "178萬", "likes": "52K", "comments": "9.4K", "shares": "22K", "date": "04/16", "trend": "跨圈層討論熱烈", "type": "時事懶人包"}, {"rank": 3, "title": "如果你還在用Sora，可以醒了——它關了", "creator": "@ai_news_daily", "url": "", "summary": "簡短有力地宣告Sora關閉事實，並給出三個替代工具建議。Threads的短文格式讓此類即時資訊貼文效果絕佳，評論區創作者分享各自的遷移方案，形成實用的眾包推薦。", "views": "156萬", "likes": "43K", "comments": "7.8K", "shares": "19K", "date": "04/04", "trend": "創作者遷移討論熱", "type": "時事懶人包"}, {"rank": 4, "title": "Meta Muse Spark上線，我最期待這三個功能", "creator": "@meta_watcher", "url": "", "summary": "以個人觀點切入討論Muse Spark最值得關注的三個功能（購物模式、多模態識別、Multi-Agent推理），配合日常情境說明實際用途，Threads個人化表達風格引發共鳴。", "views": "132萬", "likes": "38K", "comments": "5.6K", "shares": "15K", "date": "04/10", "trend": "功能期待討論高", "type": "功能開箱"}, {"rank": 5, "title": "AI工具推薦越來越難了——因為三個月後可能就關掉了", "creator": "@digital_nomad_life", "url": "", "summary": "以Sora事件為引子，反思AI工具生態的不穩定性與選擇策略，建議關注有大公司背書的工具。觀點獨特引發共鳴，Threads用戶留言踴躍分享自己的AI工具危機經驗。", "views": "98萬", "likes": "31K", "comments": "6.2K", "shares": "12K", "date": "04/18", "trend": "反思型內容高儲存", "type": "時事懶人包"}], "color": "#000000"}], "viralFactors": [{"title": "Hook 開頭技法", "items": ["前3秒點出核心痛點或衝突", "數字開頭製造具體感（30秒讀完一本書）", "反直覺標題引發點擊（AI比你更有脾氣）"], "color": "EF4444"}, {"title": "情緒驅動機制", "items": ["驚訝感：功能超出預期（Claude掛電話）", "恐懼感：工具消失/被替代的焦慮（Sora關閉）", "認同感：我也遇過這個問題（AI工具整理）"], "color": "F59E0B"}, {"title": "資訊密度策略", "items": ["TikTok/Reels：7-15秒黃金長度，70%以上完播率", "YouTube：長影片+時間戳，讓用戶自定義觀看路徑", "X/Threads：條列要點，30秒內傳遞核心價值"], "color": "3B82F6"}, {"title": "社群擴散設計", "items": ["設計可引用的金句或截圖（迷因素材）", "呼籲Tag朋友測試（去問問你的Claude）", "引發正反討論的開放性問題結尾"], "color": "8B5CF6"}], "platformChars": [{"name": "TikTok", "trait": "短影音爆發力", "desc": "AI實作Demo + 誇張旁白，前3秒決定生死，分享率是最關鍵指標", "metric": "爆紅門檻：72小時100萬觀看", "color": "010101"}, {"name": "YouTube", "trait": "深度教學首選", "desc": "長影片完播率40-74%，搜尋流入持續帶量，時間戳設計提升留存", "metric": "完播率 >60% = 優質內容", "color": "FF0000"}, {"name": "Instagram", "trait": "視覺美學驅動", "desc": "Reels 7-15秒黃金時長，儲存率是演算法核心指標，AI工具與生活風格結合效果最佳", "metric": "儲存率 >5% = 爆紅訊號", "color": "E1306C"}, {"name": "Facebook", "trait": "中高齡主力市場", "desc": "長文+圖表組合，教育性內容長尾效應強，群組轉傳是主要擴散途徑", "metric": "平均觀看留存時間最長", "color": "1877F2"}, {"name": "X (Twitter)", "trait": "即時輿論戰場", "desc": "科技業意見領袖聚集，推文串格式適合深度分析，2小時可達媒體門檻", "metric": "引用率 > 轉推率 更有價值", "color": "14171A"}, {"name": "Threads", "trait": "對話串文化", "desc": "個人化口吻 + 反直覺觀點，留言串累積是核心，品牌擬人化表達效果佳", "metric": "留言數是主要排序信號", "color": "000000"}], "chartData": {"before": {"labels": ["ChatGPT", "Gemini", "Claude", "Perplexity", "其他"], "values": [86, 5, 4, 2, 3]}, "after": {"labels": ["ChatGPT", "Gemini", "Claude", "Perplexity", "其他"], "values": [60, 21, 9, 5, 5]}}, "toolChartData": {"labels": ["ChatGPT", "NotebookLM", "Gemini", "Claude", "Perplexity", "Runway", "Midjourney", "Kling"], "values": [92, 85, 80, 74, 62, 55, 48, 42]}, "actions": ["【立即測試 Muse Spark】Meta最強模型已上線，優先測試購物推薦與多模態功能，評估對廣告投放流程的影響", "【遷移AI影片工具】Sora已關閉，立即評估Runway Gen-4.5（電影質感）或Kling 3.0（長影片）作為替代", "【Claude掛電話事件借力】以AI意識/人機關係角度切入內容創作，此議題目前社群熱度最高，品牌立場表態可帶來大量曝光", "【NotebookLM導入研究流程】Deep Research + Audio Overview組合可大幅提升內容研究效率，建議行銷團隊本週完成測試", "【追蹤Gemini整合進度】Gemini持續整合Google Workspace，企業客戶採購決策可能轉向，需監控競品動態"]};
+const impactMap={high:['var(--red)','高影響','badge-high'],medium:['var(--org)','中影響','badge-medium'],low:['var(--grn)','低影響','badge-low']};
+const rankColors=['#FFD700','#CCDDEE','#FF7A00','#8A9BAD','#8A9BAD'];
+const actColors=['#FF4343','#FF7A00','#FFD700','#00E57F','#00D4FF'];
+const actLabels=['立即執行','本週重點','本週規劃','持續進行','評估中'];
+const actTextClr=['#fff','#fff','#0d1b2a','#0d1b2a','#0d1b2a'];
+const extIcon=`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+// ── Date navigator ────────────────────────────────────────────────────────
+const AVAILABLE_DATES=["20260403", "20260404", "20260405", "20260406", "20260407", "20260408", "20260409", "20260410", "20260411", "20260412", "20260413", "20260414", "20260415", "20260416", "20260417", "20260419", "20260420", "20260421", "20260422", "20260423", "20260424"];
+function goToDate(){
+  const v=document.getElementById('report-date').value;
+  if(!v)return;
+  const d=v.replace(/-/g,'');
+  if(!AVAILABLE_DATES.includes(d)){alert('⚠️ 該日期尚無報告（'+v+'）');return;}
+  window.location.href='AI趨勢與社群熱度分析_'+d+'.html';
+}
+function prevReport(){
+  const d='20260423';
+  const idx=AVAILABLE_DATES.indexOf(d);
+  if(idx>0)window.location.href='AI趨勢與社群熱度分析_'+AVAILABLE_DATES[idx-1]+'.html';
+}
+function nextReport(){
+  const d='20260423';
+  const idx=AVAILABLE_DATES.indexOf(d);
+  if(idx>=0&&idx<AVAILABLE_DATES.length-1)window.location.href='AI趨勢與社群熱度分析_'+AVAILABLE_DATES[idx+1]+'.html';
+}
+
+// ── Metrics ───────────────────────────────────────────────────────────────
+const mg=document.getElementById('metrics-grid');
+D.marketMetrics.forEach(m=>{
+  mg.innerHTML+=`<div class="metric-card"><div class="metric-value">${m.value}</div><div class="metric-change ${m.trend==='up'?'up':'down'}">${m.change}</div><div class="metric-label">${m.label}</div></div>`;
+});
+
+// ── Events ────────────────────────────────────────────────────────────────
+const el=document.getElementById('events-list');
+D.keyEvents.forEach(ev=>{
+  const [dotColor,,badge]=impactMap[ev.impact]||impactMap.low;
+  const lbl=impactMap[ev.impact]?impactMap[ev.impact][1]:'';
+  const summaryHtml=ev.summary?`<div class="event-summary">${ev.summary}</div>`:'';
+  const urlHtml=ev.url?`<a class="src-link" href="${ev.url}" target="_blank" rel="noopener">${extIcon} 閱讀原文</a>`:'';
+  el.innerHTML+=`<div class="event-row">
+    <div class="event-date" style="color:${dotColor}">${ev.date}</div>
+    <div class="event-dot" style="background:${dotColor}"></div>
+    <div class="event-card ${ev.impact}">
+      <div class="event-title">${ev.title}</div>
+      <div class="event-desc">${ev.desc}</div>
+      ${summaryHtml}
+      ${urlHtml}
+    </div>
+    <div class="impact-col"><div class="impact-badge ${badge}">${lbl}</div></div>
+  </div>`;
+});
+
+// ── Tool Trends ───────────────────────────────────────────────────────────
+const tb=document.getElementById('tool-tbody');
+D.toolTrends.forEach(t=>{
+  const up=t.change.includes('↑');
+  tb.innerHTML+=`<tr>
+    <td><span class="rank-num" style="color:${t.color}">#${t.rank}</span></td>
+    <td><span class="tool-name" style="color:${t.color}">${t.tool}</span></td>
+    <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill" style="width:0%;background:${t.color}" data-width="${t.score}%"></div></div><span class="bar-score" style="color:${t.color}">${t.score}</span></div></td>
+    <td><span class="${up?'change-up':'change-down'}">${t.change}</span></td>
+    <td><span class="tool-highlight">${t.highlight}</span></td></tr>`;
+});
+
+// ── Platforms ─────────────────────────────────────────────────────────────
+const tabBar=document.getElementById('tab-bar');
+const tabPanels=document.getElementById('tab-panels');
+function getPlatUrl(n,it){
+  if(it.url)return it.url;
+  const q=encodeURIComponent(it.title);
+  const nl=n.toLowerCase();
+  if(nl.includes('tiktok'))return'https://www.tiktok.com/search?q='+q;
+  if(nl.includes('youtube'))return'https://www.youtube.com/results?search_query='+q;
+  if(nl.includes('instagram')){const h=it.creator&&it.creator.startsWith('@')?it.creator.slice(1):'';return h?'https://www.instagram.com/'+h+'/':'https://www.instagram.com/explore/search/keyword/?q='+q;}
+  if(nl.includes('facebook'))return'https://www.facebook.com/search/top?q='+q;
+  if(nl.includes('x')||nl.includes('twitter'))return'https://x.com/search?q='+q;
+  if(nl.includes('threads'))return'https://www.threads.net/search?q='+q;
+  return'https://www.google.com/search?q='+q;
+}
+D.platforms.forEach((p,pi)=>{
+  const active=pi===0;
+  tabBar.innerHTML+=`<button class="tab-btn${active?' active':''}" style="${active?'background:'+p.color+';color:#0d1b2a':''}" onclick="switchTab(${pi},this,'${p.color}')">${p.name}</button>`;
+  let rows='';
+  p.items.forEach((it,ri)=>{
+    const url=getPlatUrl(p.name,it);
+    const titleHtml=`<a class="plat-title-link" href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${it.title}</a>`;
+    const summaryHtml=it.summary?`<div class="plat-summary">${it.summary}</div>`:'';
+    rows+=`<div class="plat-row" data-url="${url}" onclick="window.open(this.dataset.url,'_blank')" style="cursor:pointer">
+      <div class="plat-rank" style="color:${rankColors[ri]}">${it.rank}</div>
+      <div>${titleHtml}<div class="plat-creator">${it.creator}</div>${summaryHtml}</div>
+      <div><div class="plat-views">${it.views}</div><div class="plat-likes">❤️ ${it.likes}</div></div>
+      <div class="plat-num">💬 ${it.comments}</div>
+      <div class="plat-num">↗ ${it.shares}</div>
+      <div class="plat-num">${it.date}</div>
+      <div><div class="plat-trend">${it.trend}</div><div class="plat-type">${it.type}</div></div>
+    </div>`;
+  });
+  tabPanels.innerHTML+=`<div class="tab-pane${active?' active':''}" id="tab-${pi}">
+    <div class="plat-header"><span>#</span><span>標題 / 創作者</span><span>觀看 / 讚</span><span style="text-align:center">留言</span><span style="text-align:center">分享</span><span style="text-align:center">日期</span><span>趨勢 / 類型</span></div>
+    ${rows}</div>`;
+});
+function switchTab(idx,btn,color){
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.color=''});
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');btn.style.background=color;btn.style.color='#0d1b2a';
+  document.getElementById('tab-'+idx).classList.add('active');
+}
+
+// ── Content Types ─────────────────────────────────────────────────────────
+const cg=document.getElementById('ct-grid');
+D.contentTypes.forEach(ct=>{
+  cg.innerHTML+=`<div class="ct-row"><div class="ct-label" style="color:${ct.color}">${ct.type}</div><div class="ct-bar-bg"><div class="ct-bar-fill" style="width:0%;background:${ct.color}" data-width="${ct.percentage}%"></div></div><div class="ct-pct" style="color:${ct.color}">${ct.percentage}%</div></div>`;
+});
+
+// ── Insights ──────────────────────────────────────────────────────────────
+const ig=document.getElementById('insights-grid');
+D.insights.forEach(ins=>{
+  ig.innerHTML+=`<div class="insight-card"><div class="insight-icon">${ins.icon}</div><div class="insight-title">${ins.title}</div><div class="insight-desc">${ins.desc}</div></div>`;
+});
+
+// ── Actions ───────────────────────────────────────────────────────────────
+const al=document.getElementById('actions-list');
+D.actions.forEach((a,i)=>{
+  al.innerHTML+=`<div class="action-row"><div class="action-badge" style="background:${actColors[i]};color:${actTextClr[i]}">${actLabels[i]}</div><div class="action-num" style="color:${actColors[i]}">0${i+1}</div><div class="action-card" style="border-left:3px solid ${actColors[i]}">${a}</div></div>`;
+});
+
+// ── Animate bars ──────────────────────────────────────────────────────────
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('[data-width]').forEach(b=>b.style.width=b.dataset.width)});
+},{threshold:0.1});
+document.querySelectorAll('.section').forEach(s=>obs.observe(s));
+setTimeout(()=>document.querySelectorAll('[data-width]').forEach(b=>{
+  if(b.getBoundingClientRect().top<window.innerHeight)b.style.width=b.dataset.width;
+}),120);
+</script>
+</body>
+</html>

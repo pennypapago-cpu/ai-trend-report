@@ -71,7 +71,7 @@
   .tab-btn:hover{border-color:var(--cyan);color:var(--wht)}.tab-btn.active{color:#0d1b2a;font-weight:700;border-color:transparent}
   .tab-pane{display:none}.tab-pane.active{display:block}
   .plat-header{display:grid;grid-template-columns:28px 1fr 105px 85px 85px 85px 115px;gap:8px;padding:8px 14px;background:var(--card2);border-radius:6px 6px 0 0;font-size:.75rem;color:var(--gray);font-weight:600}
-  .plat-row{display:grid;grid-template-columns:28px 1fr 105px 85px 85px 85px 115px;gap:8px;padding:12px 14px;border-bottom:1px solid #1e2d40;align-items:start;transition:background .15s}
+  .plat-row{cursor:pointer;display:grid;grid-template-columns:28px 1fr 105px 85px 85px 85px 115px;gap:8px;padding:12px 14px;border-bottom:1px solid #1e2d40;align-items:start;transition:background .15s}
   .plat-row:nth-child(even){background:var(--bg2)}.plat-row:hover{background:var(--card2)}
   .plat-rank{font-size:1rem;font-weight:800;padding-top:2px}
   a.plat-title-link{color:var(--wht);text-decoration:none;font-weight:700;font-size:.85rem;line-height:1.4;display:block}
@@ -112,7 +112,8 @@
     .plat-header>:nth-child(n+4),.plat-row>:nth-child(n+4){display:none}
     .plat-header>:nth-child(3),.plat-row>:nth-child(3){display:block}
     .plat-header>:last-child,.plat-row>:last-child{display:block}
-  }
+  }  .nav-arrow:hover{background:var(--cyan);color:#0d1b2a;border-color:var(--cyan)}
+  .nav-arrow:disabled{opacity:.3;cursor:not-allowed}
 </style>
 </head>
 <body>
@@ -123,9 +124,11 @@
     <div class="header-sub">Social Media AI Trend Intelligence Report</div>
     <div class="header-meta">分析日期：2026年4月21日　｜　分析期間：2026年4月14日 – 2026年4月21日　｜　Powered by Claude</div>
   </div>
-  <div class="date-nav">
+      <div class="date-nav">
     <span class="date-nav-label">📅 查看其他日期</span>
+    <button class="nav-arrow" onclick="prevReport()" title="上一篇">←</button>
     <input type="date" id="report-date" value="2026-04-21">
+    <button class="nav-arrow" onclick="nextReport()" title="下一篇">→</button>
     <button class="go-btn" onclick="goToDate()">前往 →</button>
   </div>
 </header>
@@ -179,13 +182,24 @@ const actTextClr=['#fff','#fff','#0d1b2a','#0d1b2a','#0d1b2a'];
 const extIcon=`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
 
 // ── Date navigator ────────────────────────────────────────────────────────
+const AVAILABLE_DATES=["20260403", "20260404", "20260405", "20260406", "20260407", "20260408", "20260409", "20260410", "20260411", "20260412", "20260413", "20260414", "20260415", "20260416", "20260417", "20260419", "20260420", "20260421", "20260422", "20260423", "20260424"];
 function goToDate(){
   const v=document.getElementById('report-date').value;
   if(!v)return;
   const d=v.replace(/-/g,'');
+  if(!AVAILABLE_DATES.includes(d)){alert('⚠️ 該日期尚無報告（'+v+'）');return;}
   window.location.href='AI趨勢與社群熱度分析_'+d+'.html';
 }
-document.getElementById('report-date').addEventListener('change',goToDate);
+function prevReport(){
+  const d='20260421';
+  const idx=AVAILABLE_DATES.indexOf(d);
+  if(idx>0)window.location.href='AI趨勢與社群熱度分析_'+AVAILABLE_DATES[idx-1]+'.html';
+}
+function nextReport(){
+  const d='20260421';
+  const idx=AVAILABLE_DATES.indexOf(d);
+  if(idx>=0&&idx<AVAILABLE_DATES.length-1)window.location.href='AI趨勢與社群熱度分析_'+AVAILABLE_DATES[idx+1]+'.html';
+}
 
 // ── Metrics ───────────────────────────────────────────────────────────────
 const mg=document.getElementById('metrics-grid');
@@ -228,16 +242,27 @@ D.toolTrends.forEach(t=>{
 // ── Platforms ─────────────────────────────────────────────────────────────
 const tabBar=document.getElementById('tab-bar');
 const tabPanels=document.getElementById('tab-panels');
+function getPlatUrl(n,it){
+  if(it.url)return it.url;
+  const q=encodeURIComponent(it.title);
+  const nl=n.toLowerCase();
+  if(nl.includes('tiktok'))return'https://www.tiktok.com/search?q='+q;
+  if(nl.includes('youtube'))return'https://www.youtube.com/results?search_query='+q;
+  if(nl.includes('instagram')){const h=it.creator&&it.creator.startsWith('@')?it.creator.slice(1):'';return h?'https://www.instagram.com/'+h+'/':'https://www.instagram.com/explore/search/keyword/?q='+q;}
+  if(nl.includes('facebook'))return'https://www.facebook.com/search/top?q='+q;
+  if(nl.includes('x')||nl.includes('twitter'))return'https://x.com/search?q='+q;
+  if(nl.includes('threads'))return'https://www.threads.net/search?q='+q;
+  return'https://www.google.com/search?q='+q;
+}
 D.platforms.forEach((p,pi)=>{
   const active=pi===0;
   tabBar.innerHTML+=`<button class="tab-btn${active?' active':''}" style="${active?'background:'+p.color+';color:#0d1b2a':''}" onclick="switchTab(${pi},this,'${p.color}')">${p.name}</button>`;
   let rows='';
   p.items.forEach((it,ri)=>{
-    const titleHtml=it.url
-      ?`<a class="plat-title-link" href="${it.url}" target="_blank" rel="noopener">${it.title}</a>`
-      :`<span class="plat-title-plain">${it.title}</span>`;
+    const url=getPlatUrl(p.name,it);
+    const titleHtml=`<a class="plat-title-link" href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${it.title}</a>`;
     const summaryHtml=it.summary?`<div class="plat-summary">${it.summary}</div>`:'';
-    rows+=`<div class="plat-row">
+    rows+=`<div class="plat-row" data-url="${url}" onclick="window.open(this.dataset.url,'_blank')" style="cursor:pointer">
       <div class="plat-rank" style="color:${rankColors[ri]}">${it.rank}</div>
       <div>${titleHtml}<div class="plat-creator">${it.creator}</div>${summaryHtml}</div>
       <div><div class="plat-views">${it.views}</div><div class="plat-likes">❤️ ${it.likes}</div></div>

@@ -1,0 +1,7 @@
+# 只同步 HTML 報告，其他全部忽略
+*.pptx
+*.docx
+*.mp4
+*.wav
+*.bat
+圖/
