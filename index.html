@@ -16,8 +16,7 @@
   .latest-btn:hover{opacity:.85}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;max-width:940px;margin:0 auto}
   .card{background:#111f30;border:1px solid #1e3450;border-radius:10px;padding:15px 16px;
-        display:flex;flex-direction:column;gap:5px;text-decoration:none;color:inherit;
-        transition:all .2s}
+        display:flex;flex-direction:column;gap:5px;text-decoration:none;color:inherit;transition:all .2s}
   .card:hover{border-color:#00d4ff;background:#162438;transform:translateY(-2px)}
   .card.latest{border-color:#00d4ff;background:#12263d}
   .card-date{font-size:.98rem;font-weight:700;color:#e8f4f8}
@@ -31,28 +30,119 @@
 <div class="topbar"></div>
 <h1>📊 AI 趨勢與社群熱度分析</h1>
 <p class="subtitle">每日自動更新 · 點擊查看完整報告</p>
-<a class="latest-btn" href="AI趨勢與社群熱度分析_20260424.html">👉 查看最新報告（2026-04-24）</a>
-<div class="grid" id="grid"></div>
-<footer id="footer">pennypapago-cpu/ai-trend-report</footer>
-<script>
-const reports=[
-  "20260424","20260423","20260422","20260421","20260420",
-  "20260419","20260417","20260416","20260415","20260414",
-  "20260413","20260412","20260411","20260410","20260409",
-  "20260408","20260407","20260406","20260405","20260404","20260403"
-];
-const PREFIX="AI趨勢與社群熱度分析_";
-const grid=document.getElementById('grid');
-reports.forEach((d,i)=>{
-  const iso=d.slice(0,4)+'-'+d.slice(4,6)+'-'+d.slice(6);
-  grid.innerHTML+=`<a class="card${i===0?' latest':''}" href="${PREFIX}${d}.html">
-    <div class="card-date">${iso}</div>
+<a class="latest-btn" href="AI趨勢與社群熱度分析_20260426.html">👉 查看最新報告（2026-04-26）</a>
+<div class="grid">
+  <a class="card latest" href="AI趨勢與社群熱度分析_20260426.html">
+    <div class="card-date">2026-04-26</div>
     <div class="card-label">AI趨勢 &amp; 社群熱度</div>
-    ${i===0?'<span class="badge">最新</span>':''}
-  </a>`;
-});
-document.getElementById('footer').textContent=
-  `共 ${reports.length} 份報告 · 最後更新：${reports[0].slice(0,4)+'-'+reports[0].slice(4,6)+'-'+reports[0].slice(6)} · pennypapago-cpu/ai-trend-report`;
-</script>
+    <span class="badge">最新</span>
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260424.html">
+    <div class="card-date">2026-04-24</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260423.html">
+    <div class="card-date">2026-04-23</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260422.html">
+    <div class="card-date">2026-04-22</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260421.html">
+    <div class="card-date">2026-04-21</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260420.html">
+    <div class="card-date">2026-04-20</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260419.html">
+    <div class="card-date">2026-04-19</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260417.html">
+    <div class="card-date">2026-04-17</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260416.html">
+    <div class="card-date">2026-04-16</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260415.html">
+    <div class="card-date">2026-04-15</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260414.html">
+    <div class="card-date">2026-04-14</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260413.html">
+    <div class="card-date">2026-04-13</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260412.html">
+    <div class="card-date">2026-04-12</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260411.html">
+    <div class="card-date">2026-04-11</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260410.html">
+    <div class="card-date">2026-04-10</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260409.html">
+    <div class="card-date">2026-04-09</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260408.html">
+    <div class="card-date">2026-04-08</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260407.html">
+    <div class="card-date">2026-04-07</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260406.html">
+    <div class="card-date">2026-04-06</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260405.html">
+    <div class="card-date">2026-04-05</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260404.html">
+    <div class="card-date">2026-04-04</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+  <a class="card" href="AI趨勢與社群熱度分析_20260403.html">
+    <div class="card-date">2026-04-03</div>
+    <div class="card-label">AI趨勢 &amp; 社群熱度</div>
+    
+  </a>
+</div>
+<footer>共 22 份報告 · 最後更新：2026-04-26 · pennypapago-cpu/ai-trend-report</footer>
 </body>
 </html>
