@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 趨勢與社群熱度分析｜2026年5月5日</title>
+<style>
+  :root{--bg:#0d1b2a;--bg2:#162133;--card:#1e2d40;--card2:#243549;--cyan:#00d4ff;--purp:#7c3aed;--grn:#00e57f;--org:#ff7a00;--red:#ff4343;--wht:#ffffff;--gray:#8a9bad;--ylw:#ffd700;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--wht);font-family:'Segoe UI','Noto Sans TC',sans-serif;font-size:14px;line-height:1.5}
+  .topbar{background:linear-gradient(90deg,var(--cyan),var(--purp));height:5px}
+  /* ── Header ── */
+  header{background:var(--bg2);padding:28px 48px 20px;border-bottom:1px solid #243549;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+  .header-left h1{font-size:2rem;font-weight:800;letter-spacing:-0.5px}
+  .header-left h1 span{color:var(--cyan)}
+  .header-sub{color:var(--cyan);font-size:.9rem;margin-top:4px;letter-spacing:1px}
+  .header-meta{color:var(--gray);font-size:.8rem;margin-top:6px}
+  /* ── Date Navigator ── */
+  .date-nav{background:var(--card);border:1px solid #2e4260;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .date-nav-label{color:var(--gray);font-size:.78rem;white-space:nowrap}
+  .date-nav input[type=date]{background:var(--bg2);border:1px solid #2e4260;color:var(--wht);padding:6px 10px;border-radius:6px;font-size:.88rem;cursor:pointer;outline:none}
+  .date-nav input[type=date]::-webkit-calendar-picker-indicator{filter:invert(.7);cursor:pointer}
+  .date-nav input[type=date]:focus{border-color:var(--cyan)}
+  .go-btn{background:var(--cyan);color:#0d1b2a;border:none;padding:7px 16px;border-radius:6px;font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+  .go-btn:hover{opacity:.85}  .nav-arrow:hover{background:var(--cyan);color:#0d1b2a;border-color:var(--cyan)}
+  .nav-arrow:disabled{opacity:.3;cursor:not-allowed}
+  /* ── Layout ── */
+  .container{max-width:1400px;margin:0 auto;padding:0 32px 64px}
+  .section{margin-top:40px}
+  .section-title{font-size:1.1rem;font-weight:700;color:var(--cyan);border-left:4px solid var(--cyan);padding-left:12px;margin-bottom:18px;text-transform:uppercase;letter-spacing:1px}
+  /* ── Metric Cards ── */
+  .metrics-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .metric-card{background:var(--card);border:1px solid #2e4260;border-radius:10px;padding:18px 16px;text-align:center;transition:transform .2s,box-shadow .2s}
+  .metric-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,212,255,.15)}
+  .metric-value{font-size:1.6rem;font-weight:800;color:var(--cyan);line-height:1.2}
+  .metric-change{font-size:.78rem;font-weight:600;margin-top:4px}
+  .metric-change.up{color:var(--grn)}.metric-change.down{color:var(--red)}
+  .metric-label{font-size:.78rem;color:var(--gray);margin-top:6px}
+  /* ── Key Events ── */
+  .events-list{display:flex;flex-direction:column;gap:12px}
+  .event-row{display:grid;grid-template-columns:100px 16px 1fr auto;align-items:start;gap:0 16px}
+  .event-date{background:var(--card2);border-radius:6px;padding:5px 10px;font-size:.78rem;font-weight:700;text-align:center;margin-top:10px}
+  .event-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0;margin-top:12px}
+  .event-card{background:var(--card);border-radius:8px;padding:14px 16px;border-left:3px solid transparent}
+  .event-card.high{border-left-color:var(--red)}.event-card.medium{border-left-color:var(--org)}.event-card.low{border-left-color:var(--grn)}
+  .event-title{font-size:.93rem;font-weight:700;margin-bottom:5px}
+  .event-desc{font-size:.8rem;color:#ccdde0;line-height:1.6}
+  .event-summary{font-size:.78rem;color:#a8bfcc;margin-top:8px;padding-top:8px;border-top:1px solid #2a3d52;line-height:1.6}
+  .src-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;color:var(--cyan);font-size:.75rem;text-decoration:none;border:1px solid rgba(0,212,255,.4);border-radius:4px;padding:3px 10px;transition:all .2s}
+  .src-link:hover{background:var(--cyan);color:#0d1b2a;border-color:var(--cyan)}
+  .src-link svg{flex-shrink:0}
+  .impact-col{display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:10px}
+  .impact-badge{padding:3px 10px;border-radius:4px;font-size:.72rem;font-weight:700;white-space:nowrap}
+  .badge-high{background:var(--red);color:#fff}.badge-medium{background:var(--org);color:#fff}.badge-low{background:var(--grn);color:#0d1b2a}
+  /* ── Tool Table ── */
+  .tool-table{width:100%;border-collapse:collapse}
+  .tool-table thead th{background:var(--card2);padding:10px 14px;font-size:.78rem;color:var(--gray);text-align:left;font-weight:600}
+  .tool-table tbody tr{border-bottom:1px solid #1e2d40;transition:background .15s}
+  .tool-table tbody tr:nth-child(even){background:var(--bg2)}
+  .tool-table tbody tr:hover{background:var(--card2)}
+  .tool-table td{padding:12px 14px;font-size:.85rem;vertical-align:middle}
+  .rank-num{font-size:1rem;font-weight:800}.tool-name{font-weight:700;font-size:.95rem}
+  .bar-wrap{display:flex;align-items:center;gap:10px}
+  .bar-bg{flex:1;height:10px;background:var(--bg);border-radius:5px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:5px;transition:width 1s ease}
+  .bar-score{font-size:.88rem;font-weight:700;min-width:28px}
+  .change-up{color:var(--grn);font-weight:700}.change-down{color:var(--red);font-weight:700}
+  .tool-highlight{font-size:.78rem;color:#ccdde0}
+  /* ── Platform Tabs ── */
+  .tab-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .tab-btn{padding:7px 18px;border-radius:6px;border:1px solid #2e4260;background:var(--card);color:var(--gray);font-size:.83rem;font-weight:600;cursor:pointer;transition:all .2s}
+  .tab-btn:hover{border-color:var(--cyan);color:var(--wht)}.tab-btn.active{color:#0d1b2a;font-weight:700;border-color:transparent}
+  .tab-pane{display:none}.tab-pane.active{display:block}
+  .plat-header{display:grid;grid-template-columns:28px 1fr 105px 85px 85px 85px 115px;gap:8px;padding:8px 14px;background:var(--card2);border-radius:6px 6px 0 0;font-size:.75rem;color:var(--gray);font-weight:600}
+  .plat-row{cursor:pointer;display:grid;grid-template-columns:28px 1fr 105px 85px 85px 85px 115px;gap:8px;padding:12px 14px;border-bottom:1px solid #1e2d40;align-items:start;transition:background .15s}
+  .plat-row:nth-child(even){background:var(--bg2)}.plat-row:hover{background:var(--card2)}
+  .plat-rank{font-size:1rem;font-weight:800;padding-top:2px}
+  a.plat-title-link{color:var(--wht);text-decoration:none;font-weight:700;font-size:.85rem;line-height:1.4;display:block}
+  a.plat-title-link:hover{color:var(--cyan);text-decoration:underline}
+  .plat-title-plain{font-weight:700;font-size:.85rem;line-height:1.4}
+  .plat-creator{font-size:.73rem;color:var(--gray);margin-top:3px}
+  .plat-summary{font-size:.72rem;color:#8a9bad;margin-top:5px;line-height:1.5;border-top:1px solid #243549;padding-top:5px}
+  .plat-views{font-size:.92rem;font-weight:700;color:var(--cyan)}
+  .plat-likes{font-size:.78rem;color:var(--gray);margin-top:2px}
+  .plat-num{font-size:.82rem;color:#ccdde0;text-align:center;padding-top:2px}
+  .plat-trend{font-size:.75rem;color:var(--grn)}.plat-type{font-size:.72rem;color:var(--org);margin-top:2px}.plat-date{font-size:.7rem;color:var(--gray);margin-top:3px}
+  /* ── Analysis ── */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .ct-grid{display:flex;flex-direction:column;gap:14px}
+  .ct-row{display:flex;align-items:center;gap:14px}
+  .ct-label{width:88px;font-size:.85rem;font-weight:600;flex-shrink:0}
+  .ct-bar-bg{flex:1;height:14px;background:var(--bg2);border-radius:7px;overflow:hidden}
+  .ct-bar-fill{height:100%;border-radius:7px;transition:width 1s ease}
+  .ct-pct{font-size:.88rem;font-weight:700;min-width:36px;text-align:right}
+  .insights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .insight-card{background:var(--card);border:1px solid var(--cyan);border-radius:10px;padding:18px 20px;transition:transform .2s}
+  .insight-card:hover{transform:translateY(-2px)}
+  .insight-icon{font-size:1.5rem;margin-bottom:8px}.insight-title{font-size:.95rem;font-weight:700;color:var(--cyan);margin-bottom:6px}
+  .insight-desc{font-size:.82rem;color:#ccdde0;line-height:1.6}
+  /* ── Actions ── */
+  .actions-list{display:flex;flex-direction:column;gap:12px}
+  .action-row{display:grid;grid-template-columns:120px auto 1fr;align-items:center;gap:16px}
+  .action-badge{padding:8px 0;border-radius:6px;font-size:.78rem;font-weight:700;text-align:center}
+  .action-num{font-size:1.4rem;font-weight:800;opacity:.9}
+  .action-card{background:var(--card);border-radius:8px;padding:12px 18px;font-size:.88rem;line-height:1.55}
+  footer{border-top:2px solid var(--purp);text-align:center;padding:18px;color:var(--gray);font-size:.75rem;margin-top:48px;background:var(--bg2)}
+  @media(max-width:960px){
+    .metrics-grid{grid-template-columns:repeat(2,1fr)}
+    .insights-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}
+    header{padding:20px 20px 16px;flex-direction:column;align-items:flex-start}
+    .container{padding:0 16px 48px}
+    .plat-header,.plat-row{grid-template-columns:24px 1fr 90px 80px}
+    .plat-header>:nth-child(n+4),.plat-row>:nth-child(n+4){display:none}
+    .plat-header>:nth-child(3),.plat-row>:nth-child(3){display:block}
+    .plat-header>:last-child,.plat-row>:last-child{display:block}
+  }
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<header>
+  <div class="header-left">
+    <h1>AI 趨勢與社群<span>熱度分析</span></h1>
+    <div class="header-sub">Social Media AI Trend Intelligence Report</div>
+    <div class="header-meta">分析日期：2026年5月5日　｜　分析期間：2026年4月29日 ~ 2026年5月5日　｜　Powered by Claude</div>
+  </div>
+    <div class="date-nav">
+    <span class="date-nav-label">📅 查看其他日期</span>
+    <button class="nav-arrow" onclick="prevReport()" title="上一篇">←</button>
+    <input type="date" id="report-date" value="2026-05-05">
+    <button class="nav-arrow" onclick="nextReport()" disabled title="下一篇">→</button>
+    <button class="go-btn" onclick="goToDate()">前往 →</button>
+  </div>
+</header>
+<div class="container">
+  <section class="section">
+    <div class="section-title">市場關鍵指標</div>
+    <div class="metrics-grid" id="metrics-grid"></div>
+  </section>
+  <section class="section">
+    <div class="section-title">重大事件 Key Events</div>
+    <div class="events-list" id="events-list"></div>
+  </section>
+  <section class="section">
+    <div class="section-title">AI 工具熱度排行榜</div>
+    <table class="tool-table"><thead><tr>
+      <th style="width:40px">#</th><th style="width:130px">AI 工具</th>
+      <th>社群熱度指數</th><th style="width:110px">變化</th><th>核心動態</th>
+    </tr></thead><tbody id="tool-tbody"></tbody></table>
+  </section>
+  <section class="section">
+    <div class="section-title">各平台 Top 5 熱門內容</div>
+    <div class="tab-bar" id="tab-bar"></div>
+    <div id="tab-panels"></div>
+  </section>
+  <div class="two-col section">
+    <div>
+      <div class="section-title">內容類型佔比</div>
+      <div class="ct-grid" id="ct-grid"></div>
+    </div>
+    <div>
+      <div class="section-title">爆紅關鍵因素</div>
+      <div class="insights-grid" id="insights-grid"></div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="section-title">行動建議 Action Recommendations</div>
+    <div class="actions-list" id="actions-list"></div>
+    <div style="background:var(--card2);border-radius:8px;padding:12px 18px;margin-top:14px;color:var(--ylw);font-size:.88rem;">
+      💡 優先執行前 3 項，可在本週結束前實現顯著流量成長
+    </div>
+  </section>
+</div>
+<footer>Powered by Claude Sonnet 4.6　·　AI 情報自動化系統　·　2026年5月5日</footer>
+<script>
+const D={"dateStr": "2026年5月5日", "dateISO": "2026-05-05", "reportPeriod": "2026年4月29日 ~ 2026年5月5日", "marketMetrics": [{"value": "7.1 億", "change": "+34%", "label": "近7日總曝光", "trend": "up"}, {"value": "TikTok（Younger Self 跨平台延燒）", "change": "最熱平台", "label": "主導平台", "trend": "up"}, {"value": "Veo 3", "change": "App Store #1", "label": "最熱 AI 工具", "trend": "up"}, {"value": "+34%", "change": "較上週", "label": "整體成長率", "trend": "up"}], "keyEvents": [{"date": "2026-04-26", "title": "OpenAI 正式關閉 Sora 2 行動 App", "desc": "Sora 手機 App 4/26 下架，9/24 將關閉 API；創作者大規模遷移 Veo 3、Seedance 2.0", "summary": "OpenAI 在 4/26 突襲式關閉 Sora 2 行動端、9/24 將關閉 API。這是 2025 底以邀請制席捲全球的 AI 影音 App 的最後身影，創作者社群一夜轉投 Google Veo 3、ByteDance Seedance 2.0、Luma Dream Machine。對行銷人員的啟示：依賴 Sora 流程的素材庫需立即遷移；Veo 3 是品牌端首選（自帶音訊、單影片可直接發布），Seedance 2.0 則拿到 TikTok 內部紅利。", "url": "https://resource.digen.ai/sora-2-openai-shutdown-guide-2026/", "impact": "high"}, {"date": "2026-05-03", "title": "AI 童年合照（Younger Self）席捲 IG／X／TikTok", "desc": "ChatGPT、Gemini 童年合照趨勢全球單週累積觀看突破 8 億次", "summary": "上傳兒時照＋現照，AI 生成「跟小時候的自己對坐／在公園長椅相擁」黑白寫真，IG／X／TikTok 同步爆款。此趨勢結合懷舊、自我成長敘事與內建 prompt 範本，是近 30 天最具情緒滲透力的 AI 內容形式。對行銷人員啟示：可立即嫁接到品牌週年、會員生日月、客戶見證、員工故事等情境，本週仍處峰值，估還有 5-7 天紅利期。", "url": "https://www.heraldgoa.in/globe-nation/viral-ai-childhood-portrait-trend-how-to-create-your-younger-self-image-exact-prompts/473573/", "impact": "high"}, {"date": "2026-05-01", "title": "Claude Opus 4.6 + Claude Code 持續霸佔開發者 X 動態", "desc": "X 平台約 1/3 開發者動態為 Claude Code 心得，被質疑為病毒式行銷", "summary": "Anthropic Claude Opus 4.6 在 SWE-bench 達 74%，搭配 Cursor、Windsurf、Claude Code 滲透開發者生態。資深開發者觀察 X 上開發者貼文約 1/3 在討論 Claude Code，雖然語氣被質疑「像 AI 寫的」，但這代表 B2B SaaS 工具內嵌 + UGC 心得文 + 跨族群案例的擴散公式正在奏效。對行銷人員啟示：把工具內嵌變成內容引擎，比廣告投放更有複利效應。", "url": "https://x.com/cblatts/status/2009617277822320916", "impact": "medium"}, {"date": "2026-04-30", "title": "Midjourney V8 Alpha 開放，原生 2K 渲染", "desc": "V8 Alpha 啟動小規模推出，速度與解析度大幅提升", "summary": "Midjourney V7 仍是預設模型，但 V8 Alpha 帶來原生 2K 渲染、更快迭代速度與更高人物一致性。對社群創作者而言，畫質提升讓 AI 圖片更難被一眼識破，「電影感」內容在 IG／TikTok 的停留率持續上升。但需注意：V7 真實感過強已造成多起假新聞病毒擴散事件，平台正研擬「強制 AI 標籤」政策。", "url": "https://www.progressiverobot.com/2026/04/28/midjourney-v8/", "impact": "medium"}, {"date": "2026-04-28", "title": "AI Cinema 用 Seedance 2.0 拍動畫水果實境秀爆紅", "desc": "TikTok 帳號 AI Cinema 單一系列累積 3,900 萬觀看", "summary": "TikTok 帳號 AI Cinema 用 ByteDance Seedance 2.0 製作「動畫水果實境秀」，把蘋果、香蕉、葡萄擬人化拍成《全美一家親》風格短劇，單一影集達 39M 觀看。明確標示 AI 反而獲得更高互動，與「AI 偽裝真人翻車」趨勢形成對比，證明 2026「透明使用 AI」是更安全的爆款公式。對行銷人員啟示：標明 AI 製作 + 戲劇衝突 = 高停留率。", "url": "https://aiimagetovideo.pro/blog/ai-generated-tiktok-videos/", "impact": "high"}], "platforms": [{"name": "TikTok", "color": "#FF0050", "barColor": "FF0050", "icon": "♪", "items": [{"rank": 1, "title": "AI Cinema 動畫水果實境秀第三季（Seedance 2.0）", "creator": "@aicinema", "url": "https://www.tiktok.com/en/trending/detail/tiktok-creator-insights", "summary": "用 Seedance 2.0 把蘋果、香蕉、葡萄擬人化拍成《全美一家親》風格短劇，誇張表情＋AI 配音命中演算法。透明標示 AI 反而拉高完成率到 78%，是 2026 年「擁抱 AI 標籤」的代表案例。", "views": "39M", "likes": "4.2M", "comments": "186K", "shares": "920K", "date": "2026-04-28", "trend": "現象級", "type": "AI 動畫娛樂"}, {"rank": 2, "title": "Younger Self Reunion 童年合照挑戰（教學版）", "creator": "@trendingprompts", "url": "https://www.tiktok.com/en/trending/detail/ai-prompt-for-old-self-and-recent-self-trend", "summary": "60 秒 ChatGPT 童年合照 prompt 教學＋情緒反應 vlog，命中「成長療癒」情緒。一條教學帶動跨平台連鎖，留言區滿是觀眾自發分享的成長故事。", "views": "21.5M", "likes": "3.1M", "comments": "412K", "shares": "1.25M", "date": "2026-05-02", "trend": "爆衝（單週 +280%）", "type": "AI 教學／情緒"}, {"rank": 3, "title": "Veo 3 vs Sora 2 最後對決（關閉前 48 小時實測）", "creator": "@ai_lab_pro", "url": "https://www.veo3ai.io/blog/veo-3-vs-sora-2-comparison", "summary": "Sora 手機 App 關閉前 48 小時做的同一 prompt 實測，Veo 3 自帶音訊 vs Sora 2 靜音影片，視覺對比強烈，意外搭上「終結式話題」流量。", "views": "12.3M", "likes": "1.42M", "comments": "86.5K", "shares": "315K", "date": "2026-04-25", "trend": "穩定", "type": "AI 工具評測"}, {"rank": 4, "title": "Claude Code 一句話蓋網站（60 秒 Demo）", "creator": "@vibecoder", "url": "https://x.com/cblatts/status/2009617277822320916", "summary": "60 秒展示用 Claude Code 一句指令生成完整登陸頁，畫面分屏顯示提示與成果。技術族群＋創業族群擴散，留言出現 ChatGPT vs Claude 兩派論戰。", "views": "9.8M", "likes": "920K", "comments": "73.2K", "shares": "188K", "date": "2026-05-01", "trend": "上升中", "type": "AI 開發工具"}, {"rank": 5, "title": "NotebookLM Audio Overview 翻譯名著", "creator": "@studyhacks", "url": "https://noimosai.com/en/blog/7-best-ai-agents-for-instagram-trend-analysis-in-2026-stay-ahead-of-viral-shifts", "summary": "把整本《追風箏的孩子》丟進 NotebookLM 自動生成 Podcast 風格雙人對談，學生族群轉發成考試讀書神器。觀看數低於前四名，但留存與分享率最高。", "views": "6.4M", "likes": "780K", "comments": "52K", "shares": "210K", "date": "2026-04-30", "trend": "穩定上升", "type": "AI 知識／教育"}]}, {"name": "YouTube", "color": "#FF0000", "barColor": "FF0000", "icon": "▶", "items": [{"rank": 1, "title": "Shorts：Claude Code 60 秒完成全棧 App", "creator": "Fireship", "url": "https://patternmentor.com/blog/viral-x-threads-2026", "summary": "Fireship 招牌快剪節奏 Shorts，60 秒展示用 Claude Code 從零生成 React + Supabase App。完播率 88%，是 YouTube Shorts 演算法判定病毒級的門檻。", "views": "6.2M", "likes": "428K", "comments": "13.2K", "shares": "94.8K", "date": "2026-05-01", "trend": "爆衝", "type": "AI 開發工具"}, {"rank": 2, "title": "Sora 2 之死：OpenAI 為何放棄影音", "creator": "MattVidPro AI", "url": "https://en.wikipedia.org/wiki/Sora_(text-to-video_model)", "summary": "8 分鐘長片解析 OpenAI 4/26 關閉 Sora 手機 App、9/24 關閉 API 的策略決定，並推薦 Veo 3、Seedance 2.0、Luma 三大替代方案。完成率 71%。", "views": "4.8M", "likes": "215K", "comments": "28.4K", "shares": "62.3K", "date": "2026-04-27", "trend": "上升中", "type": "AI 產業評論"}, {"rank": 3, "title": "Veo 3 vs Sora 2 完整實測（30 個 Prompt）", "creator": "AI Search", "url": "https://www.veo3ai.io/blog/veo-3-vs-sora-2-full-comparison-2026", "summary": "12 分鐘長片用 30 個一致 prompt 實測 Veo 3 vs Sora 2，鏡頭穩定度、音訊同步、長度限制全比較。是 YouTube 演算法最愛的「明確比較＋資訊密度高」典型結構。", "views": "3.2M", "likes": "186K", "comments": "21.9K", "shares": "43.5K", "date": "2026-04-26", "trend": "上升中", "type": "AI 工具評測"}, {"rank": 4, "title": "ChatGPT 童年合照：3 種 prompt 風格全公開", "creator": "AI Andy", "url": "https://www.media.io/ai/image-to-image/chatgpt-childhood-photo-prompt", "summary": "拆解 Studio／Outdoor／Beach 三種 Younger Self prompt 範本，附完整可複製字串。「立即可用 + 範本免費」是 AI 教學頻道在 2026 持續成長的方法。", "views": "2.4M", "likes": "142K", "comments": "9.8K", "shares": "28.3K", "date": "2026-05-02", "trend": "上升中", "type": "AI 教學"}, {"rank": 5, "title": "NotebookLM 完整教學：把 100 份 PDF 變 Podcast", "creator": "Tiago Forte", "url": "https://noimosai.com/en/blog/7-best-ai-agents-for-instagram-trend-analysis-in-2026-stay-ahead-of-viral-shifts", "summary": "知識管理大師 Tiago Forte 示範把整學期 100 份論文丟進 NotebookLM 產出 Audio Overview。長片 18 分鐘，平均觀看時長 11 分鐘，留存表現驚人。", "views": "1.65M", "likes": "108K", "comments": "7.2K", "shares": "19.4K", "date": "2026-04-29", "trend": "穩定上升", "type": "AI 知識管理"}]}, {"name": "Instagram", "color": "#C13584", "barColor": "C13584", "icon": "■", "items": [{"rank": 1, "title": "Younger Self Studio Portrait 黑白棚拍系列", "creator": "@aicaptured", "url": "https://www.heraldgoa.in/globe-nation/viral-ai-childhood-portrait-trend-how-to-create-your-younger-self-image-exact-prompts/473573/", "summary": "黑白攝影棚風格 ChatGPT 童年合照寫真，搭配「致 5 歲的我」短文，Reels 與輪播雙形式並進。情緒共鳴極強，本週 IG 互動率最高的 AI 內容類型。", "views": "28.7M", "likes": "3.9M", "comments": "215K", "shares": "680K", "date": "2026-05-03", "trend": "爆衝", "type": "AI 寫真／情緒"}, {"rank": 2, "title": "Midjourney V8 Alpha 電影感肖像系列", "creator": "@cinematic_ai", "url": "https://www.progressiverobot.com/2026/04/28/midjourney-v8/", "summary": "V8 Alpha 2K 渲染搭配 Omni Reference 維持人物一致性，做出一系列《雲端情人》風格情侶肖像。輪播形式（10 張變化）效果最佳，留言區辨真偽討論增加品牌記憶點。", "views": "14.2M", "likes": "1.65M", "comments": "94.3K", "shares": "182K", "date": "2026-04-30", "trend": "上升中", "type": "AI 肖像藝術"}, {"rank": 3, "title": "Hug My Younger Self 動畫版（Gemini + Veo 3）", "creator": "@gemini_creators", "url": "https://www.cyberlink.com/blog/trending-topics/4252/hug-my-younger-self-ai-gemini", "summary": "Gemini 生成靜態圖再用 Veo 3 動畫化「擁抱小時候的自己」3 秒循環，情緒爆點極強。Reels 完成率 82%，遠高於 IG 平均 45%。", "views": "11.8M", "likes": "1.48M", "comments": "131K", "shares": "395K", "date": "2026-05-02", "trend": "爆衝", "type": "AI 動畫情緒"}, {"rank": 4, "title": "Carousel：5 個 ChatGPT 行銷 Hooks", "creator": "@growthmarketers", "url": "https://posteverywhere.ai/blog/35-best-ai-tools-for-instagram", "summary": "10 張輪播以 PostEverywhere 自動生成的視覺＋ChatGPT 撰寫的標題，教 SMB 老闆寫廣告 Hook。儲存率 8.4% 是分享率的 4 倍，教育型內容指標。", "views": "8.9M", "likes": "920K", "comments": "47.8K", "shares": "215K", "date": "2026-04-29", "trend": "穩定", "type": "AI 行銷教學"}, {"rank": 5, "title": "Canva Magic Design：一鍵產品牌套件", "creator": "@designwithai", "url": "https://buffer.com/resources/ai-social-media-content-creation/", "summary": "示範 Canva AI 一鍵生成完整品牌套件（Logo＋色票＋IG 模板），瞄準個人品牌與小商家。互動率不算驚人，但 DM 詢問轉化最高，是 lead-gen 型內容代表。", "views": "5.6M", "likes": "612K", "comments": "33.4K", "shares": "118K", "date": "2026-04-30", "trend": "穩定", "type": "AI 設計工具"}]}, {"name": "X / Twitter", "color": "#1DA1F2", "barColor": "1DA1F2", "icon": "𝕏", "items": [{"rank": 1, "title": "Claude Code 30 天經驗總結（資深開發者長串文）", "creator": "@swyx", "url": "https://x.com/cblatts/status/2009617277822320916", "summary": "資深開發者長串文總結 Claude Code 30 天日常使用體驗，從 vibe coding 到企業整合。引用率高、留言裡 ChatGPT 派 vs Claude 派分裂式辯論，是經典爭議型擴散。", "views": "12.4M", "likes": "78.5K", "comments": "5.2K", "shares": "18.7K", "date": "2026-05-01", "trend": "上升中", "type": "AI 開發者心得"}, {"rank": 2, "title": "Younger Self prompt 串文（含失敗範例）", "creator": "@levelsio", "url": "https://industrywired.com/artificial-intelligence/meet-your-younger-self-trend-goes-viral-how-to-create-your-own-image-11787839", "summary": "獨立開發者 levelsio 公開自己的 Younger Self 圖＋完整 prompt，搭配「AI 拯救我這週」情緒文案。引爆橫跨開發者與一般使用者的串文鏈。", "views": "8.7M", "likes": "92K", "comments": "4.8K", "shares": "14.2K", "date": "2026-05-03", "trend": "爆衝", "type": "AI 寫真／情緒"}, {"rank": 3, "title": "Sora 2 RIP：5 大替代方案總整理串文", "creator": "@minchoi", "url": "https://resource.digen.ai/sora-2-openai-shutdown-guide-2026/", "summary": "AI 內容創作者 Min Choi 在 Sora 關閉當天發 17 條串文整理 Veo 3、Seedance 2.0、Luma、Runway、Kling 五大替代方案，附效果對比 GIF。", "views": "6.2M", "likes": "64.5K", "comments": "3.4K", "shares": "21.8K", "date": "2026-04-26", "trend": "穩定", "type": "AI 工具盤點"}, {"rank": 4, "title": "5W AI Citation Index：50 個被 AI 引用的網站", "creator": "@PRNewswire", "url": "https://www.prnewswire.com/news-releases/5w-releases-ai-platform-citation-source-index-2026-the-50-websites-that-now-decide-what-brands-are-visible-inside-chatgpt-claude-perplexity-gemini-and-google-ai-overviews-302759804.html", "summary": "5W 公布 ChatGPT、Claude、Perplexity、Gemini、Google AI Overviews 在 2026 引用最多的 50 個網站清單。對 SEO 與 GEO（生成式引擎優化）社群是必讀資源。", "views": "3.8M", "likes": "28.4K", "comments": "1.95K", "shares": "9.8K", "date": "2026-04-28", "trend": "上升中", "type": "AI SEO／GEO"}, {"rank": 5, "title": "Grok 4 vs GPT-5.4 vs Claude Opus 4.6 SWE-bench", "creator": "@DrJimFan", "url": "https://gurusup.com/blog/ai-comparisons", "summary": "NVIDIA 研究員整理三大模型 SWE-bench：Grok 4 (75%)、GPT-5.4 (74.9%)、Claude Opus 4.6 (74%+)。模型分數雖近，但開發者實際偏好仍以 Claude 為主，引發底層原因討論。", "views": "2.4M", "likes": "21.8K", "comments": "1.42K", "shares": "5.6K", "date": "2026-04-30", "trend": "穩定", "type": "AI 模型評測"}]}, {"name": "Facebook", "color": "#1877F2", "barColor": "1877F2", "icon": "f", "items": [{"rank": 1, "title": "媽媽社團瘋傳：用 ChatGPT 跟 5 歲的自己對話", "creator": "全職媽媽日常", "url": "https://www.heraldgoa.in/globe-nation/viral-ai-childhood-portrait-trend-how-to-create-your-younger-self-image-exact-prompts/473573/", "summary": "Facebook 媽媽社群擴散最快的 Younger Self 案例，搭配「想跟那個還沒生小孩的自己說...」長文情緒文案。FB 仍是中年女性 AI 內容主場，分享率比 IG 高 2.4 倍。", "views": "5.8M", "likes": "428K", "comments": "62K", "shares": "184K", "date": "2026-05-03", "trend": "爆衝", "type": "AI 寫真／情緒"}, {"rank": 2, "title": "Veo 3 寫實感婚紗 AI 影片（諷刺風）", "creator": "新郎日記", "url": "https://www.veo3ai.io/blog/veo-3-vs-sora-2-comparison", "summary": "用 Veo 3 生成「結不起婚」幽默諷刺婚紗 AI 影片，FB 傳統喜慶 + 諷刺風格組合精準命中中老年用戶分享習慣。", "views": "3.2M", "likes": "186K", "comments": "24.5K", "shares": "92K", "date": "2026-05-01", "trend": "上升中", "type": "AI 影片娛樂"}, {"rank": 3, "title": "教爸媽用 ChatGPT 翻譯外國藥單", "creator": "孝順 AI 派", "url": "https://zapier.com/blog/best-ai-social-media-management/", "summary": "圖文 + 截圖教學貼，示範用手機 ChatGPT 拍照翻譯藥單。實用 + 銀髮關懷情緒命中 FB 主力客群。分享數遠高於愛心。", "views": "2.1M", "likes": "128K", "comments": "9.8K", "shares": "62.5K", "date": "2026-04-29", "trend": "穩定", "type": "AI 實用教學"}, {"rank": 4, "title": "Canva AI 做 50 張母親節貼文一鍵搞定", "creator": "小老闆社團", "url": "https://buffer.com/resources/ai-social-media-content-creation/", "summary": "店家社團案例貼，用 Canva Magic Design 一次產 50 張母親節貼文，幫店家省下整週設計時間。中小企業 AI 焦點貼。", "views": "1.4M", "likes": "82K", "comments": "5.6K", "shares": "18.4K", "date": "2026-04-30", "trend": "穩定", "type": "AI 行銷工具"}, {"rank": 5, "title": "Claude Code：我兒子用它做了學校報告", "creator": "工程師爸爸", "url": "https://x.com/cblatts/status/2009617277822320916", "summary": "工程師父親分享小孩用 Claude Code 完成學校 Scratch 作業，引發親子科技教育討論。代表 AI 工具下沉到家庭場景。", "views": "920K", "likes": "58.5K", "comments": "4.2K", "shares": "12.8K", "date": "2026-05-02", "trend": "上升中", "type": "AI 親子／教育"}]}, {"name": "Threads", "color": "#555555", "barColor": "555555", "icon": "@", "items": [{"rank": 1, "title": "我用 Claude + Gemini + ChatGPT 重組工作流", "creator": "@productivity_jenny", "url": "https://medium.com/@rahulkumar8707/7-social-media-trends-you-must-know-in-2026-f5d377cc5c4d", "summary": "Threads 文字長貼示範三大 AI 並用（Claude 寫稿、Gemini 翻譯、ChatGPT 配圖）的真實工作流，附時數對比表。Threads「真誠故事 + 實用乾貨」公式典型代表。", "views": "4.2M", "likes": "186K", "comments": "8.4K", "shares": "32K", "date": "2026-05-02", "trend": "上升中", "type": "AI 生產力"}, {"rank": 2, "title": "我把 5 歲的自己抱起來那一刻", "creator": "@emotional_ai", "url": "https://www.analyticsinsight.net/news/meet-your-younger-self-the-viral-chatgpt-photo-trend-taking-over-social-media", "summary": "Younger Self 圖搭配 200 字童年回憶長文，Threads 演算法偏好的「圖文情緒型」內容，回覆數遠高於愛心。是品牌做客戶見證可參考的格式。", "views": "3.1M", "likes": "142K", "comments": "12.8K", "shares": "28.5K", "date": "2026-05-04", "trend": "爆衝", "type": "AI 寫真／情緒"}, {"rank": 3, "title": "我為什麼從 ChatGPT 跳到 Claude（中文長貼）", "creator": "@indie_hacker_tw", "url": "https://x.com/cblatts/status/2009617277822320916", "summary": "中文圈獨立開發者寫 7 段長貼，論述跳槽 Claude 主因：寫作自然度、長文連貫、Claude Code 整合。中文 AI 開發者圈擴散主力。", "views": "1.8M", "likes": "94.2K", "comments": "6.8K", "shares": "14.5K", "date": "2026-05-01", "trend": "上升中", "type": "AI 工具比較"}, {"rank": 4, "title": "NotebookLM 把整年 LINE 對話變成備忘錄", "creator": "@digital_minimalist", "url": "https://noimosai.com/en/blog/7-best-ai-agents-for-instagram-trend-analysis-in-2026-stay-ahead-of-viral-shifts", "summary": "示範把 LINE 一年聊天紀錄匯出後丟進 NotebookLM 生成個人記憶備忘錄，類似「AI 日記」。隱私討論引爆留言。", "views": "1.2M", "likes": "68.5K", "comments": "4.2K", "shares": "9.8K", "date": "2026-04-30", "trend": "上升中", "type": "AI 知識管理"}, {"rank": 5, "title": "Threads × AI：我用 Claude 寫長貼一個月", "creator": "@content_lab", "url": "https://medium.com/@rahulkumar8707/7-social-media-trends-you-must-know-in-2026-f5d377cc5c4d", "summary": "30 天試驗報告，整理 Threads 演算法在 2026 年偏好「資訊密度高、對話結構、多段落」的 AI 寫作公式。", "views": "850K", "likes": "42K", "comments": "2.8K", "shares": "6.2K", "date": "2026-04-29", "trend": "穩定", "type": "AI 寫作"}]}], "toolTrends": [{"tool": "Veo 3", "rank": 1, "score": 96, "change": "↑ +85%", "highlight": "Sora 2 退場最大受惠者，自帶音訊讓品牌一鍵發布", "color": "#FBBC05"}, {"tool": "Claude Opus 4.6 / Claude Code", "rank": 2, "score": 93, "change": "↑ +42%", "highlight": "X 上 1/3 開發者貼文討論，跨平台滲透到 FB、Threads", "color": "#00D4FF"}, {"tool": "ChatGPT (Image Generation)", "rank": 3, "score": 88, "change": "↑ +18%", "highlight": "Younger Self 童年合照趨勢主力，跨平台延燒", "color": "#10A37F"}, {"tool": "Google Gemini", "rank": 4, "score": 78, "change": "↑ +22%", "highlight": "Hug Younger Self 動畫版主推手，Reels 完成率 82%", "color": "#EA4335"}, {"tool": "Seedance 2.0 (ByteDance)", "rank": 5, "score": 72, "change": "↑ +95%", "highlight": "TikTok 內部紅利，AI Cinema 動畫水果秀 39M 觀看", "color": "#FF7A00"}, {"tool": "Midjourney V7 / V8 Alpha", "rank": 6, "score": 64, "change": "↑ +28%", "highlight": "V8 Alpha 開放原生 2K，IG 電影感肖像高轉發", "color": "#FF69B4"}, {"tool": "NotebookLM", "rank": 7, "score": 56, "change": "↑ +12%", "highlight": "Audio Overview 留存最高，學生 / 知識工作者主場", "color": "#9370DB"}, {"tool": "Sora 2", "rank": 8, "score": 38, "change": "↓ -45%", "highlight": "4/26 手機 App 關閉，9/24 API 退場，創作者大遷移", "color": "#FF4343"}, {"tool": "Perplexity", "rank": 9, "score": 36, "change": "↑ +8%", "highlight": "GEO（生成式引擎優化）關鍵字穩定上升", "color": "#20B2AA"}, {"tool": "Runway / Luma", "rank": 10, "score": 32, "change": "↑ +38%", "highlight": "Sora 移民潮承接者，影音工具市佔重新洗牌", "color": "#7C3AED"}], "contentTypes": [{"type": "AI 寫真／童年合照（情緒型）", "percentage": 32, "color": "#7C3AED"}, {"type": "AI 工具評測／比較", "percentage": 22, "color": "#00D4FF"}, {"type": "AI 教學／Prompt 範本", "percentage": 18, "color": "#00E57F"}, {"type": "AI 短影片／動畫娛樂", "percentage": 14, "color": "#FF7A00"}, {"type": "AI 開發者心得／Vibe Coding", "percentage": 9, "color": "#FF4343"}, {"type": "AI 知識管理（NotebookLM）", "percentage": 5, "color": "#FBBC05"}], "insights": [{"icon": "💖", "title": "情緒型 AI 內容成 2026 Q2 第一波爆款公式", "desc": "Younger Self 童年合照趨勢一週內橫掃 IG／FB／TikTok／Threads／X 五大平台，證明「低操作門檻 + 高情緒共鳴 + 內建 prompt 範本」是 AI 內容病毒擴散三要素。本週仍處峰值，估還有 5-7 天紅利期。"}, {"icon": "🎬", "title": "Sora 2 退場重塑 AI 影片生態", "desc": "OpenAI 4/26 關閉 Sora 手機 App、9/24 退場 API。Veo 3（+85%）與 Seedance 2.0（+95%）是兩大受惠者。創作者已開始遷移工作流，行銷人員需立即評估替代方案，Veo 3 為品牌端首選（自帶音訊可直接發布）。"}, {"icon": "🏷️", "title": "透明標示 AI 反而提升完成率與分享率", "desc": "AI Cinema 動畫水果秀完成率 78%、Younger Self 教學影片完成率 82%，遠超平台平均（45-50%）。明確標示 AI 製作 + 工具名稱 + 實作流程，比隱藏 AI 高 30-60% 互動。"}, {"icon": "👨‍💻", "title": "Claude 在開發者圈擴散公式跨界滲透", "desc": "Claude Code 從開發者 X 串文擴散到 Threads、Facebook 親子社群（工程師爸爸案例），證明 B2B SaaS 透過工具內嵌 + UGC 心得文 + 跨族群案例的擴散公式正在奏效。"}, {"icon": "🧵", "title": "Threads 是 2026 中文圈 AI 內容增量主場", "desc": "Threads 偏好「真誠長文 + 實用乾貨 + 圖文情緒」內容。中文 AI 工作流分享、AI 工具比較類內容互動率持續攀升，回覆權重高於發文，是品牌可立即進場的藍海。"}], "actions": ["【立即上線 Younger Self 品牌嫁接活動（峰值剩 5-7 天）】在 IG／FB 推出「對 5 年前還沒用過我們產品的自己說...」客戶見證活動，套用 ChatGPT 童年合照 prompt 模板，預估觸及單月 +200%。Reels + 輪播雙形式並進，文案附完整 prompt 拉收藏。", "【AI 影片素材主力切換到 Veo 3 + Seedance 2.0】Sora 2 手機 App 4/26 已關閉、API 9/24 退場。所有依賴 Sora 流程立即遷移至 Veo 3（自帶音訊、品牌端適用）或 Seedance 2.0（TikTok 內部紅利）。本週可先做一次素材庫盤點。", "【Threads 進場：每週 3 則中文 AI 工作流長貼】鎖定中文 AI 開發者、生產力族群，每週發 3 則「AI 工作流分享」長貼，建立品牌專業權威。回覆權重高於發文，主動回 50 則才是真增長。預估 3 個月可累積 1 萬 followers。", "【公開標示 AI 製作，建立信任】所有 AI 生成內容明確標示「AI 製作」與工具名稱，搭配實作流程圖。完成率與分享率將比隱藏 AI 高 30-60%。Midjourney V8 真實感過強，更需主動標示避免假新聞危機。", "【投資 NotebookLM Audio Overview 作為內容資產】將品牌長文、白皮書、產品手冊、客戶 FAQ 轉成 NotebookLM Audio Overview 雙人對談 podcast。教育類客戶 ROI 最高，是本週最划算的內容 hack。"]};
+const impactMap={high:['var(--red)','高影響','badge-high'],medium:['var(--org)','中影響','badge-medium'],low:['var(--grn)','低影響','badge-low']};
+const rankColors=['#FFD700','#CCDDEE','#FF7A00','#8A9BAD','#8A9BAD'];
+const actColors=['#FF4343','#FF7A00','#FFD700','#00E57F','#00D4FF'];
+const actLabels=['立即執行','本週重點','本週規劃','持續進行','評估中'];
+const actTextClr=['#fff','#fff','#0d1b2a','#0d1b2a','#0d1b2a'];
+const extIcon=`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+// ── Date navigator ────────────────────────────────────────────────────────
+const AVAILABLE_DATES=["20260403", "20260404", "20260405", "20260406", "20260407", "20260408", "20260409", "20260410", "20260411", "20260412", "20260413", "20260414", "20260415", "20260416", "20260417", "20260419", "20260420", "20260421", "20260422", "20260423", "20260424", "20260426", "20260427", "20260428", "20260429", "20260430", "20260501", "20260503", "20260504", "20260505"];
+function goToDate(){
+  const v=document.getElementById('report-date').value;
+  if(!v)return;
+  const d=v.replace(/-/g,'');
+  if(!AVAILABLE_DATES.includes(d)){alert('⚠️ 該日期尚無報告（'+v+'）');return;}
+  window.location.href='AI趨勢與社群熱度分析_'+d+'.html';
+}
+function prevReport(){
+  const d='20260505';
+  const idx=AVAILABLE_DATES.indexOf(d);
+  if(idx>0)window.location.href='AI趨勢與社群熱度分析_'+AVAILABLE_DATES[idx-1]+'.html';
+}
+function nextReport(){
+  const d='20260505';
+  const idx=AVAILABLE_DATES.indexOf(d);
+  if(idx>=0&&idx<AVAILABLE_DATES.length-1)window.location.href='AI趨勢與社群熱度分析_'+AVAILABLE_DATES[idx+1]+'.html';
+}
+
+// ── Metrics ───────────────────────────────────────────────────────────────
+const mg=document.getElementById('metrics-grid');
+D.marketMetrics.forEach(m=>{
+  mg.innerHTML+=`<div class="metric-card"><div class="metric-value">${m.value}</div><div class="metric-change ${m.trend==='up'?'up':'down'}">${m.change}</div><div class="metric-label">${m.label}</div></div>`;
+});
+
+// ── Events ────────────────────────────────────────────────────────────────
+const el=document.getElementById('events-list');
+D.keyEvents.forEach(ev=>{
+  const [dotColor,,badge]=impactMap[ev.impact]||impactMap.low;
+  const lbl=impactMap[ev.impact]?impactMap[ev.impact][1]:'';
+  const summaryHtml=ev.summary?`<div class="event-summary">${ev.summary}</div>`:'';
+  const urlHtml=ev.url?`<a class="src-link" href="${ev.url}" target="_blank" rel="noopener">${extIcon} 閱讀原文</a>`:'';
+  el.innerHTML+=`<div class="event-row">
+    <div class="event-date" style="color:${dotColor}">${ev.date}</div>
+    <div class="event-dot" style="background:${dotColor}"></div>
+    <div class="event-card ${ev.impact}">
+      <div class="event-title">${ev.title}</div>
+      <div class="event-desc">${ev.desc}</div>
+      ${summaryHtml}
+      ${urlHtml}
+    </div>
+    <div class="impact-col"><div class="impact-badge ${badge}">${lbl}</div></div>
+  </div>`;
+});
+
+// ── Tool Trends ───────────────────────────────────────────────────────────
+const tb=document.getElementById('tool-tbody');
+D.toolTrends.forEach(t=>{
+  const up=t.change.includes('↑');
+  tb.innerHTML+=`<tr>
+    <td><span class="rank-num" style="color:${t.color}">#${t.rank}</span></td>
+    <td><span class="tool-name" style="color:${t.color}">${t.tool}</span></td>
+    <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill" style="width:0%;background:${t.color}" data-width="${t.score}%"></div></div><span class="bar-score" style="color:${t.color}">${t.score}</span></div></td>
+    <td><span class="${up?'change-up':'change-down'}">${t.change}</span></td>
+    <td><span class="tool-highlight">${t.highlight}</span></td></tr>`;
+});
+
+// ── Platforms ─────────────────────────────────────────────────────────────
+const tabBar=document.getElementById('tab-bar');
+const tabPanels=document.getElementById('tab-panels');
+function getPlatUrl(n,it){
+  if(it.url)return it.url;
+  const q=encodeURIComponent(it.title);
+  const nl=n.toLowerCase();
+  if(nl.includes('tiktok'))return'https://www.tiktok.com/search?q='+q;
+  if(nl.includes('youtube'))return'https://www.youtube.com/results?search_query='+q;
+  if(nl.includes('instagram')){const h=it.creator&&it.creator.startsWith('@')?it.creator.slice(1):'';return h?'https://www.instagram.com/'+h+'/':'https://www.instagram.com/explore/search/keyword/?q='+q;}
+  if(nl.includes('facebook'))return'https://www.facebook.com/search/top?q='+q;
+  if(nl.includes('x')||nl.includes('twitter'))return'https://x.com/search?q='+q;
+  if(nl.includes('threads'))return'https://www.threads.net/search?q='+q;
+  return'https://www.google.com/search?q='+q;
+}
+D.platforms.forEach((p,pi)=>{
+  const active=pi===0;
+  tabBar.innerHTML+=`<button class="tab-btn${active?' active':''}" style="${active?'background:'+p.color+';color:#0d1b2a':''}" onclick="switchTab(${pi},this,'${p.color}')">${p.name}</button>`;
+  let rows='';
+  p.items.forEach((it,ri)=>{
+    const url=getPlatUrl(p.name,it);
+    const titleHtml=`<a class="plat-title-link" href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${it.title}</a>`;
+    const summaryHtml=it.summary?`<div class="plat-summary">${it.summary}</div>`:'';
+    rows+=`<div class="plat-row" data-url="${url}" onclick="window.open(this.dataset.url,'_blank')" style="cursor:pointer">
+      <div class="plat-rank" style="color:${rankColors[ri]}">${it.rank}</div>
+      <div>${titleHtml}<div class="plat-creator">${it.creator}</div>${summaryHtml}</div>
+      <div><div class="plat-views">${it.views}</div><div class="plat-likes">❤️ ${it.likes}</div></div>
+      <div class="plat-num">💬 ${it.comments}</div>
+      <div class="plat-num">↗ ${it.shares}</div>
+      <div class="plat-num">${it.date}</div>
+      <div><div class="plat-trend">${it.trend}</div><div class="plat-type">${it.type}</div></div>
+    </div>`;
+  });
+  tabPanels.innerHTML+=`<div class="tab-pane${active?' active':''}" id="tab-${pi}">
+    <div class="plat-header"><span>#</span><span>標題 / 創作者</span><span>觀看 / 讚</span><span style="text-align:center">留言</span><span style="text-align:center">分享</span><span style="text-align:center">日期</span><span>趨勢 / 類型</span></div>
+    ${rows}</div>`;
+});
+function switchTab(idx,btn,color){
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.color=''});
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');btn.style.background=color;btn.style.color='#0d1b2a';
+  document.getElementById('tab-'+idx).classList.add('active');
+}
+
+// ── Content Types ─────────────────────────────────────────────────────────
+const cg=document.getElementById('ct-grid');
+D.contentTypes.forEach(ct=>{
+  cg.innerHTML+=`<div class="ct-row"><div class="ct-label" style="color:${ct.color}">${ct.type}</div><div class="ct-bar-bg"><div class="ct-bar-fill" style="width:0%;background:${ct.color}" data-width="${ct.percentage}%"></div></div><div class="ct-pct" style="color:${ct.color}">${ct.percentage}%</div></div>`;
+});
+
+// ── Insights ──────────────────────────────────────────────────────────────
+const ig=document.getElementById('insights-grid');
+D.insights.forEach(ins=>{
+  ig.innerHTML+=`<div class="insight-card"><div class="insight-icon">${ins.icon}</div><div class="insight-title">${ins.title}</div><div class="insight-desc">${ins.desc}</div></div>`;
+});
+
+// ── Actions ───────────────────────────────────────────────────────────────
+const al=document.getElementById('actions-list');
+D.actions.forEach((a,i)=>{
+  al.innerHTML+=`<div class="action-row"><div class="action-badge" style="background:${actColors[i]};color:${actTextClr[i]}">${actLabels[i]}</div><div class="action-num" style="color:${actColors[i]}">0${i+1}</div><div class="action-card" style="border-left:3px solid ${actColors[i]}">${a}</div></div>`;
+});
+
+// ── Animate bars ──────────────────────────────────────────────────────────
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('[data-width]').forEach(b=>b.style.width=b.dataset.width)});
+},{threshold:0.1});
+document.querySelectorAll('.section').forEach(s=>obs.observe(s));
+setTimeout(()=>document.querySelectorAll('[data-width]').forEach(b=>{
+  if(b.getBoundingClientRect().top<window.innerHeight)b.style.width=b.dataset.width;
+}),120);
+</script>
+</body>
+</html>
